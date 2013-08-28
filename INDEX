@@ -1,0 +1,143 @@
+AFT.mat                 Matrix of Afternoon High Frequency S&P Indices
+BASKETBALL              Basket ball data
+BCofLRet                Coffee log-returns
+BCofLRet                Duke daily log-returns
+BCofLRet                Duke daily log-returns
+Balt.ts                 Baltimore Electricity Load and Temperature Data
+CORNTEMP                Corn and Temperature Data
+CPN.ts                  timeSeries of Calpine daily close
+CRUDE                   Term Structure of Crude Oil Forward Prices
+DSP.ts                  Daily S&P close
+DSP500                  Vector of the daily close and log-returns of
+                        the S&P 500 index
+DSPLRet                 Numeric vector of daily log returns of the
+                        S&P500 index
+DUKE.index              Data for the DUKE INDEX
+DUKE.wer                ~~ data name/kind ... ~~
+DUKE1.wer               ~~ data name/kind ... ~~
+DUKE2.wer               ~~ data name/kind ... ~~
+FRWRD                   Natural Gas Forward Contract Prices
+GEYSER                  Geyser Data
+GEqeps.ts               Quarterly Earnings
+GermanB041700           German Treasury Bonds
+HOWAREYOU               ~~ data name/kind ... ~~
+IBM                     ~~ data name/kind ... ~~
+INT.YIELD               ~~ data name/kind ... ~~
+Kendalls.tau            Computation of the Kendall's TAU and the
+                        Spearman's RHO Correlation Coefficients
+L1                      Loss Data Sets
+LIFE                    ~~ data name/kind ... ~~
+LOSS1                   ~~ data name/kind ... ~~
+M.wer                   ~~ data name/kind ... ~~
+M1.wer                  ~~ data name/kind ... ~~
+M2.wer                  ~~ data name/kind ... ~~
+MID1                    Data Set used for a Problem on the Comparison
+                        of Least Squares and Least Absolute Deviations
+                        Polynomial Regression
+MIND                    ~~ data name/kind ... ~~
+MORN.mat                ~~ data name/kind ... ~~
+MSP                     Minute by Minute S&P 500 Quotes
+PCS                     PCS Index Data
+PRICE                   PRICE data set
+PSPOT                   Power Spot Price data
+ROCK                    ROCK data set
+Rsafd-package           Method Functions and Data Sets for the Book
+                        Statistical Analysis of Financial Data
+SHAPE.XI                PARAMETRIZATION OF GENERALIZED ETREME VALUES
+                        AND PARETO DISTRIBUTIONS
+SMORN.mat               ~~ data name/kind ... ~~
+SPsep98                 High Frequency Data: S&P 500 Data, September
+                        1998 Futures Contract
+SPsep98.ts              High Frequency Data Time Series of S&P 500
+                        Transaction Data: the September 1998 Futures
+                        Contract
+STRENGTH                STRENGTH data set
+SUBSP                   Subset of the daily S&P daily close needed for
+                        a problem
+TC                      TC data set
+TEMPS.ts                Daily Temperature Data
+TRGSP                   S&P 500 Option Data
+USBN041700              ~~ data name/kind ... ~~
+UTIL.index              Utilities Indexes
+UTILITIES               Utiities data set
+VINEYARD                VINEYARD data set
+VaR.exp.sim             ~~function to do ... ~~
+WSP                     Weekly quotes of the S&P 500 Index
+WSPLRet                 Weekly S&P log-returns
+begday                  Manipulation of timeDate Objects
+bivd                    Manipulation of Bivariate Distributions
+block.max               BLOCK MAXIMA ESTIMATION
+bns                     Coupon Bond Price, Forward Rate, and Yield
+                        Curves in the Nelson - Siegel Family
+bscall                  Black-Scholes Price of an European Call Option
+c                       Concatenate Two timeSeries Objects
+contour.dbivd           Function producing a contour plot of the level
+                        sets of the density of cdf of a bivariate
+                        distribution or a copula
+dgev                    GENERALIZED EXTREME VALUE DISTRIBUTION
+diff.timeSeries         Differentiation of timeSeries objects
+dmvnorm                 Utilities for the Multivariate Normal
+                        (Gaussian) Distribution
+eda.shape               Empirical Data Analysis
+empirical.copula        Constructor of Empirical Copulas
+estimate.mix.gev        MIX PARAMETER ESTIMATION FOR A GEV DISTRIBUTION
+ethanol                 Ethanol data
+fit.copula              Maximum Likelihood Fit of a Copula
+fit.gpd                 POT ESTIMATION OF A GENERALIZED PARETO
+                        DISTRIBUTION
+fns                     Function computing a forward rate
+gev.lmom                L-MOMENT ESTIMATORS
+gev.ml                  Maximum Likelihood Parameter Estimates
+hills                   ~~ data name/kind ... ~~
+isig                    Function computing the Implied Volatility of an
+                        Option
+kalman                  Kalman Filter for a Linear Partially Observed
+                        System
+kdest                   Gaussian Kernel 2-D Density Estimation
+kreg                    Multivariate Kernel Regression
+l1fit                   Least Absolute Deviations Regression
+lm.diag                 Diagnostics of a linear model
+makeDate                Function returning an object of class timeDate
+                        from a character string
+merge.timeSeries        Merge two objects of class timeSeries into a
+                        single one
+normal.mix.copula       Copula Constructor
+p2Dnorm                 Function computing the cdf of a 2-D Gaussian
+                        distribution
+pareto                  PARETO DISTRIBUTION
+pareto                  PARETO DISTRIBUTION
+persp.dbivd             Function producing a surface plot of the
+                        density of a bivariate distribution
+pgpd                    RANDOM GENERATOR, CUMULATIVE DISTRIBUTION AND
+                        QUANTILE FUNCTIONS OF A GPD OBJECT
+plot.gpd                PLOT OF THE TAIL OF A GENERALIZED PARETO
+                        DISTRIBUTION
+plot.timeSeries         Plot an Object of Class timeSeries
+ploting.position.estimator.LMOM
+                        function computing the plotting position
+                        estimator
+plotting.position       POTTING POSITION ESTIMATOR
+pmvnorm                 Functions giving the values of the cdf and
+                        quantile and producing random samples of a
+                        multivariate distribution function
+pred.ar                 Compute Predictions for an AR Model
+qqexp                   Empirical Q-Q PLOT WITH THE EXPONENTIAL and
+                        NORMAL DISTRIBUTIONS
+qqnorm                  Function producing a qqnorm plot
+rcopula                 Random generator for bivariate samples from a
+                        copula
+sample.LMOM             SAMPLE L-MOMENTS
+shape.plot              ESTIMATE OF XI AS FUNCTION OF THE THRESHOLD
+sstl                    Decomposition of a timeSeries Object into
+                        Trend, Seasonal and Remainder Components
+swap                    Swap Rates
+tailplot                GENERALIZED EXTREME VALUE DISTRIBUTION
+timeSeries              Constructor for Objects of Class timeSeries
+twoDkreg                Two Dimensional Gaussian Kernel Regression
+us.bis.yield            US Treasury Yields
+wCAPM.lts               Weekly Excess Returns for Tests of CAPM
+wCAPM.ts                Weekly Excess Returns for Tests of CAPM
+y4nls1                  ~~ data name/kind ... ~~
+y4nls2                  ~~ data name/kind ... ~~
+yns                     Function computing the Yield of a Bond using
+                        natural splines

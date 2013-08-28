@@ -1,0 +1,16 @@
+Package: Rsafd
+Type: Package
+Version: 1.0.0
+Title: Statistical Analysis of Financial Data in R
+Author: Rene Carmona <rcarmona@princeton.edu>
+Maintainer: Rene Carmona <rcarmona@princeton.edu>
+Depends: R (>=
+        2.2.1),timeDate,lattice,MASS,mvtnorm,quantreg,rgl,robustbase,scatterplot3d,splines,stats,SparseM
+Description: This package was developed for the book 'Statistical
+        Analysis of Financial Data in R'. It provides the functions and
+        the data sets used in the book
+LazyLoad: yes
+LazyData: yes
+License: GPL version 2 or newer
+URL: http://www.princeton.edu/~rcarmona/safd
+Built: R 2.11.1; universal-apple-darwin9.8.0; 2010-11-16 03:24:30 UTC; unix
