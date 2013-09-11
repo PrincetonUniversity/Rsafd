@@ -1,47 +1,32 @@
-useDynLib(Rsafd)
-
-.onLoad <- function(lib, pkg) require(methods)
-
-#import("utils",head,tail)
-#importFrom("stats",ts,acf,ar,arima,stl,as.ts)
-
 importFrom(utils,head)
 importFrom(utils,tail)
 importFrom(stats,ts,acf,ar,arima,as.ts)
-#importFrom(stats,stl)
+importFrom(stats,stl)
+importFrom(tseries,garch,adf.test)
+
 
 exportClasses("gpd","gpd.upper.tail","gpd.lower.tail","gpd.two.tails","copula","empirical.copula","normal.copula","frank.copula","kimeldorf.sampson.copula","gumbel.copula","galambos.copula","husler.reiss.copula","tawn.copula","bb5.copula","normal.mix.copula","bb1.copula","bb2.copula","bb3.copula","bb6.copula","bb7.copula","joe.copula","bb4.copula", "bivd", "empirical.bivd","gpd.bivd","timeSeries")
 
-exportMethods("pgpd", "qgpd", "dgpd", "rgpd", "plot", "tailplot", "show", "tail.index", "pbivd", "dbivd", "rbivd","lambda","pcopula","dcopula","rcopula","Kendalls.tau", "Spearmans.rho", "contour.pcopula", "contour.dcopula", "persp.pcopula", "persp.dcopula","contour.pbivd", "contour.dbivd", "persp.pbivd", "persp.dbivd", "seriesPositions", "seriesData", "seriesUnits", "is.timeSeries","diff", "Math", "Arith", "Ops", "merge", "begday", "noon","concat","sstl")
+exportMethods("pgpd", "qgpd", "dgpd", "rgpd", "plot", "tailplot", "show", "tail.index", "pbivd", "dbivd", "rbivd","lambda","pcopula","dcopula","rcopula","Kendalls.tau", "Spearmans.rho", "contour.pcopula", "contour.dcopula", "persp.pcopula", "persp.dcopula","contour.pbivd", "contour.dbivd", "persp.pbivd", "persp.dbivd", "seriesPositions", "seriesData", "seriesUnits", "is.timeSeries","head","tail","diff", "Math", "Arith", "Ops", "merge", "begday", "noon","concat","sstl")
 
 exportMethods( "A", "CondCinverse", "Phi", "PhiDer", "Hderiv", "AfirstDer", "AsecondDer", "InvPhi", "InvPhifirstDer", "InvPhisecondDer","DerPhi.minus1","dcdx")
 
-export(plot.timeSeries,normal.copula,normal.mix.copula,kimeldorf.sampson.copula,
+export(head.timeSeries, tail.timeSeries,
+rmvgaussian.copula,normal.copula,normal.mix.copula,kimeldorf.sampson.copula,
 gumbel.copula,galambos.copula,husler.reiss.copula,tawn.copula,joe.copula,
 frank.copula,archm.copula,
 bb1.copula,bb2.copula,bb3.copula,bb4.copula,bb5.copula,bb6.copula,
 begday, bivd, block.max, bns, bscall, 
 contour.dbivd, contour.pbivd, contour.pcopula, contour.dcopula,
-dbivd, dcopula, dgev, dgpd, dmvnorm, diff.timeSeries,dump.timeSeries, eda.shape,
-empirical.copula, estimate.mix.gev, fit.copula, fit.gpd, fns, gev.lmom, gev.ml,gpd.lmom,gpd.ml,
-gpd.1p,gpd.1q,gpd.2p,gpd.2q,ppareto,qpareto,dpareto,rpareto,
-head.timeSeries,lambda, 
+dbivd, dcopula, DF.test, dgev, dgpd, dmvnorm, diff.timeSeries,dump.timeSeries, eda.shape,
+empirical.copula, fit.copula, fit.gpd, fns, garch, gev.lmom, gev.ml,gpd.lmom,gpd.ml,
+gpd.1p,gpd.1q,gpd.2p,gpd.2q,ppareto,qpareto,dpareto,rpareto,isig, lambda, 
 kalman, kdest,Kend.table, Kendalls.tau, kreg,
 l1fit, lm.diag, makeDate,
 merge.timeSeries, noon, p2Dnorm, pbivd, pcopula,
 persp.dbivd, persp.pbivd, persp.dcopula, persp.pcopula,
 pgev,   plotting.positions, pred.ar, qgev,
 qqexp, qqnorm, rbivd, rcopula, rgev, rmvnorm, sample.LMOM,
-shape.plot, Spearmans.rho,  tail.index, tail.timeSeries,tailplot, timeSeries, timeSeriesFromList,
-twoDkreg, VaR.exp.sim, yns, acf.timeSeries,ar.timeSeries,arima.timeSeries,as.ts.timeSeries)
+shape.plot, sim.garch, Spearmans.rho,  tail.index, tailplot, timeSeries, timeSeriesFromList,
+twoDkreg, VaR.sim, yns, acf.timeSeries,arima.timeSeries,as.ts.timeSeries)
 
-data(AFT.mat,Balt.ts,BASKETBALL,BCofLRet, BLIND, CCofLRet,Charlotte.ts, COma, 
-CORNTEMP,Covington.ts, CPN.ts, CPN, CPNLRet,CRUDE,DesMoines.ts, DSP.ts,DSP,DSP500,DSPLRet,DUKE.index,DUKE.wer,DUKE1.wer,
-DUKE2.wer,DukeLRet,EnronLRet,ENRON.index,ethanol,FRWRD,GEqeps.ts,GermanB041700,
-GEYSER,hills,HOWAREYOU,IBM,IBMqeps.ts,INT.YIELD,LaGuardia.ts,LasVegas.ts,
-LIFE,LOSS1,LOSS2,L1,L2,
-M.wer,M1.wer,M2.wer,MID1,MIND,MORN.mat,MSP,Newark.ts,PCS,PEPqeps.ts,
-Philadelphia.ts,Portland.ts,PPRICE, PRICE,PSPOT,Reno.ts,ROCK,Sacramento.ts,
-SHAPE.XI,SHIP, SAFT.mat,SMORN.mat,SPsep98,SPsep98.ts,STRENGTH,SUBSP,swap,TC,TEMPS.ts,TEMPS1.ts,
-TEMPS2.ts,TRGSP,TRGSP2,TRGSP3,TRGSP2000,TSTSP,TSTSP2,TSTSP3,TSTSP2000,us.bis.yield,
-USBN041700,UTIL.index,UTILITIES,UTILITY.index,VINEYARD,wCAPM.ts,wCAPM1.ts,wCAPM2.ts,WSP,WSPLRet,y4nls1,y4nls2)
