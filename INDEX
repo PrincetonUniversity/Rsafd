@@ -1,0 +1,153 @@
+AFT.mat                 Matrices of Afternoon High Frequency S&P
+                        Indicators
+BASKETBALL              Basket ball data
+BCofLRet                Coffee log-returns
+Balt.ts                 Baltimore Electricity Load and Temperature Data
+CORNTEMP                Corn and Temperature Data
+CPN.ts                  timeSeries of Calpine daily close
+CRUDE                   Term Structure of Crude Oil Forward Prices
+Charlotte.ts            Daily Temperature Data
+DF.test                 Dickey-Fuller Unit Root Test
+DSP                     Daily S&P 500
+DSP.ts                  Daily S&P close
+DSP500                  Vector of the daily close and log-returns of
+                        the S&P 500 index
+DSPLRet                 Numeric vector of daily log returns of the
+                        S&P500 index
+DUKE.ts                 Time series of the daily closing prices of
+                        Energy Companies
+DUKE1.wer               Weekly Excess Returns for Duke Energy
+DukeLRet                Duke daily log-returns
+ENERGY.ts               Constellation Energy, Natural Gas, S&P500, and
+                        Treasuty Bill Readings
+ENRON.ts                DOW JONES Indexes for Energy Companies
+EnronIndex.ts           Values of the Enron Index
+FRWRD                   Natural Gas Forward Contract Prices
+GEqeps.ts               Quarterly Earnings
+GermanB041700           German Treasury Bonds
+HOWAREYOU               Digitized Sound
+IBM                     High Frequency Data of IBM trades in June 1999
+IBMticks.ts             Tick by tick (transaction) data for IBM on May
+                        10 - 14, 2004
+Kendalls.tau            Computation of the Kendall's TAU and the
+                        Spearman's RHO Correlation Coefficients
+L1                      Loss Data Sets
+M.wer                   Weekly Excess Returns for a Market Portfoio
+MID1                    Data Set used for a Problem on the Comparison
+                        of Least Squares and Least Absolute Deviations
+                        Polynomial Regression
+MIND                    Data Matrix used in a Problem Set
+MONTHLY                 Monthly values of the short and long interest
+                        rates and S&P 500 index
+MSP                     Minute by Minute S&P 500 Quotes
+PCS                     PCS Index Data
+PPRICE                  Daily Energy Prices and Temperatures
+PSPOT                   Power Spot Price data
+ROCK                    ROCK data set
+Ret                     20 x 10 matrix used as illustration
+Rsafd-package           Method Functions and Data Sets for the Book
+                        Statistical Analysis of Financial Data in R
+SHAPE.XI                PARAMETRIZATION OF GENERALIZED ETREME VALUES
+                        AND PARETO DISTRIBUTIONS
+SPFUT                   Daily S&P Futures Contracts with Constant
+                        Maturities
+SPsep98                 High Frequency Data: S&P 500 Data, September
+                        1998 Futures Contract
+SPsep98.ts              High Frequency Data Time Series of S&P 500
+                        Transaction Data: the September 1998 Futures
+                        Contract
+STRENGTH                STRENGTH data set
+SUBSP                   Subset of the daily S&P daily close data
+TC                      TC data set
+TRGSP                   S&P 500 Option Data
+TRGSS                   (Simulated) Data Sets used in the Regression
+                        Problem on the Pricing of Spread Options
+USBN041700              US Bonds and Notes Data on April 17, 2000
+UTIL.index              Utilities Indexes
+UTILITIES               Utiities data set
+VINEYARD                VINEYARD data set
+WSP                     Weekly quotes of the S&P 500 Index
+auto.parts              Daily stock closing prices for two auto parts
+                        companies
+begday                  Manipulation of timeDate Objects
+bitcoin                 Daily Bitcoin price between 8/25/2014 and
+                        1/6/2022
+bivd                    Manipulation of Bivariate Distributions
+block.max               BLOCK MAXIMA ESTIMATION
+bns                     Coupon Bond Price, Forward Rate, and Yield
+                        Curves in the Nelson - Siegel Family
+bscall                  Black-Scholes Price of an European Call Option
+c                       Concatenate Two timeSeries Objects
+co2.ts                  CO2 concentration
+contour.dbivd           Function producing a contour plot of the level
+                        sets of the density / cdf of a bivariate
+                        distribution or a copula
+dgev                    GENERALIZED EXTREME VALUE DISTRIBUTION
+diff                    Differentiation of timeSeries objects
+dmvnorm                 Utilities for the Multivariate Normal
+                        (Gaussian) Distribution
+empirical.copula        Constructor of Empirical Copulas
+estimate.mix.gev        MIX PARAMETER ESTIMATION FOR A GEV DISTRIBUTION
+ethanol                 Ethanol data
+fit.copula              Maximum Likelihood Fit of a Copula
+fit.gpd                 POT ESTIMATION OF A GENERALIZED PARETO
+                        DISTRIBUTION
+fns                     Function computing the values of forward rate
+                        curve from the Nelson-Siegel parametric family
+garch                   Fit a GARCH Model to a Time Series or a Vector
+gev.lmom                L-MOMENT ESTIMATORS
+gev.ml                  Maximum Likelihood Parameter Estimates
+hills                   Scottish Hill Races Record Times
+isig                    Function computing the Implied Volatility of an
+                        Option
+kalman                  Kalman Filter for a Linear Partially Observed
+                        System
+kdest                   Gaussian Kernel 2-D Density Estimation
+kreg                    Multivariate Kernel Regression
+l1fit                   Least Absolute Deviations Regression
+lm.diag                 Diagnostics of a linear model
+makeDate                Function returning an object of class timeDate
+                        from a character string
+merge                   Merge two objects of class timeSeries into a
+                        single one
+normal.mix.copula       Copula Constructor
+pareto                  PARETO DISTRIBUTION
+persp.dbivd             Function producing a surface plot of the
+                        density or the cdf of a bivariate distribution
+pgpd                    RANDOM GENERATOR, DENSITY, CUMULATIVE
+                        DISTRIBUTION AND QUANTILE FUNCTIONS OF A GPD
+                        OBJECT
+plot                    Plot an Object of Class timeSeries
+plot.gpd                PLOT OF THE TAIL OF A GENERALIZED PARETO
+                        DISTRIBUTION
+plotting.position       POTTING POSITION ESTIMATOR
+pmvnorm                 Functions giving the values of the cdf and
+                        quantile and producing random samples of a
+                        multivariate distribution function
+pred.ar                 Compute Predictions for an AR Model
+qqexp                   Empirical Q-Q PLOT WITH THE EXPONENTIAL and
+                        NORMAL DISTRIBUTIONS
+rbivd-methods           ~~ Methods for Function 'rbivd' in Package
+                        'Rsafd' ~~
+rcopula                 Random generator for bivariate samples from a
+                        copula
+rcopula-methods         ~~ Methods for Function 'rcopula' in Package
+                        'Rsafd' ~~
+rgpd-methods            ~~ Methods for Function 'rgpd' in Package
+                        'Rsafd' ~~
+rmvgaussian.copula      Generate Random Samples from the One-Factor
+                        Multivariate Gaussian Copula
+sample.LMOM             SAMPLE L-MOMENTS
+shape.plot              ESTIMATE OF XI AS FUNCTION OF THE THRESHOLD
+sim.garch               Simulation of a GARCH Model
+sp_data                 Daily Closing values of the SP500 index
+sstl                    Decomposition of a timeSeries Object into
+                        Trend, Seasonal and Remainder Components
+stocks                  Daily stock closing prices
+swap                    Swap Rates
+tailplot                GENERALIZED EXTREME VALUE DISTRIBUTION
+timeSeries              Constructor for Objects of Class timeSeries
+twoDkreg                Two Dimensional Gaussian Kernel Regression
+us.bis.yield            US Treasury Yields
+wCAPM.ts                Weekly Excess Returns for Tests of CAPM
+y4nls1                  Crude Oil Forward Data
