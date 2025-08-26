@@ -1,17 +1,19 @@
 Package: Rsafd
-Version: 1.0.0
-Date: 2013-09-09
+Version: 1.0.1
+Date: 2025-08-26
 Title: Statistical Analysis of Financial Data in R
-Author: Rene Carmona 
+Author: Rene Carmona
 Maintainer: Rene Carmona <rcarmona@princeton.edu>
-Depends: R (>= 2.2.1), timeDate, robustbase, scatterplot3d, splines,
-        tseries, plot3D
-Suggests: utils, lattice, MASS, stats
-Description: This package was developed for the book 'Statistical
-        Analysis of Financial Data in R'. It provides the functions and
-        the data sets used in the book
+Depends: R (>= 4.2.0)
+Imports: timeDate, quadprog, quantreg, plot3D, robustbase, scatterplot3d,
+        splines, tseries, glasso, qgraph, MASS
+Suggests: lattice
+Description: This package was developed for the book 'Statistical Analysis
+        of Financial Data in R'. It provides the functions and the data sets
+        used in the book.
 LazyLoad: yes
 LazyData: yes
-License: GPL (>=2)
+License: GPL (>= 2)
 URL: http://www.princeton.edu/~rcarmona/SAFD_books/Rsafd_library
-Built: R 4.2.1; ; 2023-09-28 13:45:17 UTC; unix
+Encoding: UTF-8
+NeedsCompilation: yes
