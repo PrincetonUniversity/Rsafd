@@ -1,32 +1,43 @@
-importFrom(utils,head)
-importFrom(utils,tail)
-importFrom(stats,ts,acf,ar,arima,as.ts)
-importFrom(stats,stl)
+import(timeDate) 
+import(quadprog) 
+import(quantreg) 
+import(plot3D)
+import(robustbase)
+import(scatterplot3d) 
+import(splines)
+import(glasso)
+import(qgraph)
+importFrom(utils, head, tail)
+importFrom(stats,ts,acf,ar,arima,as.ts,stl)
 importFrom(tseries,garch,adf.test)
-
+importFrom(MASS,bandwidth.nrd)
 
 exportClasses("gpd","gpd.upper.tail","gpd.lower.tail","gpd.two.tails","copula","empirical.copula","normal.copula","frank.copula","kimeldorf.sampson.copula","gumbel.copula","galambos.copula","husler.reiss.copula","tawn.copula","bb5.copula","normal.mix.copula","bb1.copula","bb2.copula","bb3.copula","bb6.copula","bb7.copula","joe.copula","bb4.copula", "bivd", "empirical.bivd","gpd.bivd","timeSeries")
 
-exportMethods("pgpd", "qgpd", "dgpd", "rgpd", "plot", "tailplot", "show", "tail.index", "pbivd", "dbivd", "rbivd","lambda","pcopula","dcopula","rcopula","Kendalls.tau", "Spearmans.rho", "contour.pcopula", "contour.dcopula", "persp.pcopula", "persp.dcopula","contour.pbivd", "contour.dbivd", "persp.pbivd", "persp.dbivd", "seriesPositions", "seriesData", "seriesUnits", "is.timeSeries","head","tail","diff", "Math", "Arith", "Ops", "merge", "begday", "noon","concat","sstl")
+exportMethods("pgpd", "qgpd", "dgpd", "rgpd", "plot", "tailplot", "show", "tail.index", "pbivd", "dbivd",
+"rbivd","lambda","pcopula","dcopula","rcopula","Kendalls.tau", "Spearmans.rho", "contour.pcopula","contour.dcopula", "persp.pcopula", 
+"persp.dcopula","contour.pbivd", "contour.dbivd", "persp.pbivd", "persp.dbivd", "seriesPositions", "seriesData", "seriesUnits", 
+"is.timeSeries","head","tail","diff", "Math", "Arith", "Ops", "merge", "begday", "noon","concat","sstl")
 
-exportMethods( "A", "CondCinverse", "Phi", "PhiDer", "Hderiv", "AfirstDer", "AsecondDer", "InvPhi", "InvPhifirstDer", "InvPhisecondDer","DerPhi.minus1","dcdx")
+#exportMethods( "A", "CondCinverse", "Phi", "PhiDer", "Hderiv", "AfirstDer", "AsecondDer", "InvPhi", "InvPhifirstDer",
+#"InvPhisecondDer","DerPhi.minus1","dcdx")
 
-export(head.timeSeries, tail.timeSeries,
-rmvgaussian.copula,normal.copula,normal.mix.copula,kimeldorf.sampson.copula,
-gumbel.copula,galambos.copula,husler.reiss.copula,tawn.copula,joe.copula,
-frank.copula,archm.copula,
+export(rmvgaussian.copula,normal.copula,normal.mix.copula,kimeldorf.sampson.copula,
+gumbel.copula,galambos.copula,husler.reiss.copula,tawn.copula,joe.copula,frank.copula,archm.copula,
 bb1.copula,bb2.copula,bb3.copula,bb4.copula,bb5.copula,bb6.copula,
-begday, bivd, block.max, bns, bscall, 
-contour.dbivd, contour.pbivd, contour.pcopula, contour.dcopula,
-dbivd, dcopula, DF.test, dgev, dgpd, dmvnorm, diff.timeSeries,dump.timeSeries, eda.shape,
+bivd, block.max, bns, bscall, DF.test, dgev, dmvnorm, dump.timeSeries, eda.shape,
 empirical.copula, fit.copula, fit.gpd, fns, garch, gev.lmom, gev.ml,gpd.lmom,gpd.ml,
-gpd.1p,gpd.1q,gpd.2p,gpd.2q,ppareto,qpareto,dpareto,rpareto,isig, lambda, 
-kalman, kdest,Kend.table, Kendalls.tau, kreg,
-l1fit, lm.diag, makeDate,
-merge.timeSeries, noon, p2Dnorm, pbivd, pcopula,
-persp.dbivd, persp.pbivd, persp.dcopula, persp.pcopula,
-pgev,   plotting.positions, pred.ar, qgev,
-qqexp, qqnorm, rbivd, rcopula, rgev, rmvnorm, sample.LMOM,
-shape.plot, sim.garch, Spearmans.rho,  tail.index, tailplot, timeSeries, timeSeriesFromList,
-twoDkreg, VaR.sim, yns, acf.timeSeries,arima.timeSeries,as.ts.timeSeries)
+gpd.1p,gpd.1q,gpd.2p,gpd.2q,ppareto,qpareto,dpareto,rpareto,isig, 
+kalman, kdest,Kend.table, kreg, l1fit, lm.diag, makeDate, p2Dnorm,
+pgev,   plotting.positions, pred.ar, qgev, qqexp, qqnorm, rgev, rmvnorm, sample.LMOM, upper.shape.plot,
+shape.plot, sim.garch,  timeSeries, timeSeriesFromList, twoDkreg, VaR.sim, yns, acf.timeSeries,arima.timeSeries,as.ts.timeSeries)
 
+#export(head.timeSeries, tail.timeSeries,rmvgaussian.copula,normal.copula,normal.mix.copula,kimeldorf.sampson.copula,
+#gumbel.copula,galambos.copula,husler.reiss.copula,tawn.copula,joe.copula,frank.copula,archm.copula,
+#bb1.copula,bb2.copula,bb3.copula,bb4.copula,bb5.copula,bb6.copula,
+#bivd, block.max, bns, bscall, DF.test, dgev, dmvnorm, diff.timeSeries,dump.timeSeries, eda.shape,
+#empirical.copula, fit.copula, fit.gpd, fns, garch, gev.lmom, gev.ml,gpd.lmom,gpd.ml,
+#gpd.1p,gpd.1q,gpd.2p,gpd.2q,ppareto,qpareto,dpareto,rpareto,isig, 
+#kalman, kdest,Kend.table, kreg, l1fit, lm.diag, makeDate, merge.timeSeries, p2Dnorm,
+#pgev,   plotting.positions, pred.ar, qgev, qqexp, qqnorm, rgev, rmvnorm, sample.LMOM, upper.shape.plot,
+#shape.plot, sim.garch,  timeSeries, timeSeriesFromList, twoDkreg, VaR.sim, yns, acf.timeSeries,arima.timeSeries,as.ts.timeSeries)
