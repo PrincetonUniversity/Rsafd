@@ -13,7 +13,7 @@ Description: This package was developed for the book 'Statistical Analysis
         used in the book.
 LazyLoad: yes
 LazyData: yes
-License: GPL (>= 2)
+License: MIT + file LICENSE
 URL: http://www.princeton.edu/~rcarmona/SAFD_books/Rsafd_library
 Encoding: UTF-8
 NeedsCompilation: yes
