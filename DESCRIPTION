@@ -14,6 +14,6 @@ Description: This package was developed for the book 'Statistical Analysis
 LazyLoad: yes
 LazyData: yes
 License: MIT + file LICENSE
-URL: https://carmona.princeton.edu/Rsafd.zip
+URL: https://carmona.princeton.edu/orf505/Rsafd.zip
 Encoding: UTF-8
 NeedsCompilation: yes
