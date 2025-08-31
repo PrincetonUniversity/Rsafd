@@ -9,10 +9,12 @@
 name: R
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Image tag (optional override)"
+        required: false
+        default: ""
 
 permissions:
   contents: read
@@ -22,7 +24,7 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        r-version: ['4.4.3']
+        r-version: ['4.4.2']
 
     steps:
       - uses: actions/checkout@v4
