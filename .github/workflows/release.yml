@@ -46,10 +46,19 @@ jobs:
           echo "RELEASE_TS=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
 
       - name: Create tar.gz archive
-        run: tar -czvf Rsafd_${RELEASE_TS}.tar.gz --exclude='.github' --exclude='Dockerfile' .
+        run: |
+          tar -czvf Rsafd_${RELEASE_TS}.tar.gz \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='Dockerfile' \
+            --exclude='.gitignore' \
+            --exclude='.gitattributes' \
+            .
 
       - name: Create zip archive
-        run: zip -r Rsafd_${RELEASE_TS}.zip . -x ".github/*" "Dockerfile"
+        run: |
+          zip -r Rsafd_${RELEASE_TS}.zip . \
+            -x '.git/*' '.github/*' 'Dockerfile' '.gitignore' '.gitattributes'
 
       - name: Create Release
         id: create_release
