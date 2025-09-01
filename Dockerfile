@@ -17,6 +17,8 @@ WORKDIR /usr/src/Rsafd
 # Install dependencies
 RUN Rscript -e "install.packages(c('timeDate', 'quadprog', 'quantreg', 'plot3D', 'robustbase', 'scatterplot3d', 'splines', 'tseries', 'glasso', 'qgraph', 'reticulate', 'keras', 'rgl', 'glmnet'), repos='https://cran.rstudio.com')"
 
-# Install package and test loading
-RUN Rscript -e "install.packages('.', repos = NULL, type='source')"
+# Install package without test load (skips namespace load check)
+RUN R CMD INSTALL --no-test-load .
+
+# Explicit test load (will fail here if namespace truly broken)
 RUN Rscript -e "library(Rsafd)"
