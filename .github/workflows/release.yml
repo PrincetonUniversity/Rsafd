@@ -47,18 +47,20 @@ jobs:
 
       - name: Create tar.gz archive
         run: |
-          tar -czvf Rsafd_${RELEASE_TS}.tar.gz \
-            --exclude='.git' \
-            --exclude='.github' \
-            --exclude='Dockerfile' \
-            --exclude='.gitignore' \
-            --exclude='.gitattributes' \
-            .
+          set -euo pipefail
+          git ls-files > filelist.txt
+          # Create tar from tracked files only (excludes .git automatically)
+          tar -czf Rsafd_${RELEASE_TS}.tar.gz --mtime="$(date -u +%Y-%m-%d)" --transform 's#^#Rsafd/#' -T filelist.txt
+          ls -lh Rsafd_${RELEASE_TS}.tar.gz
 
       - name: Create zip archive
         run: |
-          zip -r Rsafd_${RELEASE_TS}.zip . \
-            -x '.git/*' '.github/*' 'Dockerfile' '.gitignore' '.gitattributes'
+          set -euo pipefail
+          files=$(git ls-files)
+          mkdir ziproot
+          (cd ziproot && for f in $files; do mkdir -p "$(dirname "$f")"; cp -p "../$f" "$f"; done)
+          (cd ziproot && zip -rq ../Rsafd_${RELEASE_TS}.zip .)
+          ls -lh Rsafd_${RELEASE_TS}.zip
 
       - name: Create Release
         id: create_release
