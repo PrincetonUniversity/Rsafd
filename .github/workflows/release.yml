@@ -39,24 +39,38 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - name: Zip repository
-        run: zip -r Rsafd.zip . -x ".github/workflows/*" Dockerfile
+      - name: Get package version
+        id: get_version
+        run: echo "version=$(grep -oP 'Version: \K.*' DESCRIPTION)" >> $GITHUB_OUTPUT
+      - name: Create tar.gz archive
+        run: tar -czvf Rsafd_${{ steps.get_version.outputs.version }}.tar.gz --exclude='.github' --exclude='Dockerfile' .
+      - name: Create zip archive
+        run: zip -r Rsafd_${{ steps.get_version.outputs.version }}.zip . -x ".github/*" "Dockerfile"
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{ github.run_number }}
-          release_name: Release ${{ github.run_number }}
+          tag_name: v${{ steps.get_version.outputs.version }}
+          release_name: Release ${{ steps.get_version.outputs.version }}
           draft: false
           prerelease: false
-      - name: Upload Release Asset
+      - name: Upload .tar.gz to Release
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./Rsafd.zip
-          asset_name: Rsafd.zip
+          asset_path: Rsafd_${{ steps.get_version.outputs.version }}.tar.gz
+          asset_name: Rsafd_${{ steps.get_version.outputs.version }}.tar.gz
+          asset_content_type: application/gzip
+      - name: Upload .zip to Release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: Rsafd_${{ steps.get_version.outputs.version }}.zip
+          asset_name: Rsafd_${{ steps.get_version.outputs.version }}.zip
           asset_content_type: application/zip
