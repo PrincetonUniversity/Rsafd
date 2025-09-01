@@ -17,4 +17,4 @@ WORKDIR /usr/src/Rsafd
 # Install R dependencies and the package
 RUN R -e "install.packages('remotes')"
 RUN R -e "remotes::install_deps(dependencies = TRUE)"
-RUN R -e "remotes::install_local()"
+RUN R -e "remotes::install_local(build = FALSE)"
