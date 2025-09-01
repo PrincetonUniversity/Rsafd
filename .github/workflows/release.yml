@@ -62,14 +62,26 @@ jobs:
           (cd ziproot && zip -rq ../Rsafd_${RELEASE_TS}.zip .)
           ls -lh Rsafd_${RELEASE_TS}.zip
 
+      - name: Compute checksums and git sha
+        run: |
+          echo "GIT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+          echo "TAR_SHA256=$(sha256sum Rsafd_${RELEASE_TS}.tar.gz | cut -d ' ' -f1)" >> $GITHUB_ENV
+          echo "ZIP_SHA256=$(sha256sum Rsafd_${RELEASE_TS}.zip | cut -d ' ' -f1)" >> $GITHUB_ENV
+          echo "Computed checksums:"; echo $TAR_SHA256 Rsafd_${RELEASE_TS}.tar.gz; echo $ZIP_SHA256 Rsafd_${RELEASE_TS}.zip
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${RELEASE_TS}
-          release_name: Release ${RELEASE_TS}
+          tag_name: v${{ env.RELEASE_TS }}
+          release_name: Release ${{ env.RELEASE_TS }}
+          body: |
+            Timestamp: ${{ env.RELEASE_TS }}
+            Commit: ${{ env.GIT_SHA }}
+            SHA256 (tar.gz): ${{ env.TAR_SHA256 }}
+            SHA256 (zip): ${{ env.ZIP_SHA256 }}
           draft: false
           prerelease: false
 
@@ -79,8 +91,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: Rsafd_${RELEASE_TS}.tar.gz
-          asset_name: Rsafd_${RELEASE_TS}.tar.gz
+          asset_path: Rsafd_${{ env.RELEASE_TS }}.tar.gz
+          asset_name: Rsafd_${{ env.RELEASE_TS }}.tar.gz
           asset_content_type: application/gzip
 
       - name: Upload .zip to Release
@@ -89,6 +101,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: Rsafd_${RELEASE_TS}.zip
-          asset_name: Rsafd_${RELEASE_TS}.zip
+          asset_path: Rsafd_${{ env.RELEASE_TS }}.zip
+          asset_name: Rsafd_${{ env.RELEASE_TS }}.zip
           asset_content_type: application/zip
