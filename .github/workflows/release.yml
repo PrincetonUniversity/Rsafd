@@ -39,24 +39,45 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - name: Zip repository
-        run: zip -r Rsafd.zip . -x ".github/workflows/*" Dockerfile
+
+      - name: Set release timestamp
+        id: timestamp
+        run: |
+          echo "RELEASE_TS=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
+
+      - name: Create tar.gz archive
+        run: tar -czvf Rsafd_${RELEASE_TS}.tar.gz --exclude='.github' --exclude='Dockerfile' .
+
+      - name: Create zip archive
+        run: zip -r Rsafd_${RELEASE_TS}.zip . -x ".github/*" "Dockerfile"
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{ github.run_number }}
-          release_name: Release ${{ github.run_number }}
+          tag_name: v${RELEASE_TS}
+          release_name: Release ${RELEASE_TS}
           draft: false
           prerelease: false
-      - name: Upload Release Asset
+
+      - name: Upload .tar.gz to Release
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./Rsafd.zip
-          asset_name: Rsafd.zip
+          asset_path: Rsafd_${RELEASE_TS}.tar.gz
+          asset_name: Rsafd_${RELEASE_TS}.tar.gz
+          asset_content_type: application/gzip
+
+      - name: Upload .zip to Release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: Rsafd_${RELEASE_TS}.zip
+          asset_name: Rsafd_${RELEASE_TS}.zip
           asset_content_type: application/zip
