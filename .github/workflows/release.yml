@@ -43,31 +43,40 @@ jobs:
       - name: Set release timestamp
         id: timestamp
         run: |
-          echo "RELEASE_TS=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
+          ts=$(date +'%Y%m%d%H%M%S')
+          echo "RELEASE_TS=$ts" >> $GITHUB_ENV
+          echo "release_ts=$ts" >> $GITHUB_OUTPUT
 
-      - name: Create tar.gz archive
+      - name: Create tar.gz archive (no timestamp in filename)
         run: |
           set -euo pipefail
           git ls-files > filelist.txt
           # Create tar from tracked files only (excludes .git automatically)
-          tar -czf Rsafd_${RELEASE_TS}.tar.gz --mtime="$(date -u +%Y-%m-%d)" --transform 's#^#Rsafd/#' -T filelist.txt
-          ls -lh Rsafd_${RELEASE_TS}.tar.gz
+          tar -czf Rsafd.tar.gz --mtime="$(date -u +%Y-%m-%d)" --transform 's#^#Rsafd/#' -T filelist.txt
+          ls -lh Rsafd.tar.gz
 
-      - name: Create zip archive
+      - name: Create zip archive (no timestamp in filename)
         run: |
           set -euo pipefail
           files=$(git ls-files)
           mkdir ziproot
           (cd ziproot && for f in $files; do mkdir -p "$(dirname "$f")"; cp -p "../$f" "$f"; done)
-          (cd ziproot && zip -rq ../Rsafd_${RELEASE_TS}.zip .)
-          ls -lh Rsafd_${RELEASE_TS}.zip
+          (cd ziproot && zip -rq ../Rsafd.zip .)
+          ls -lh Rsafd.zip
 
       - name: Compute checksums and git sha
+        id: checksums
         run: |
-          echo "GIT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-          echo "TAR_SHA256=$(sha256sum Rsafd_${RELEASE_TS}.tar.gz | cut -d ' ' -f1)" >> $GITHUB_ENV
-          echo "ZIP_SHA256=$(sha256sum Rsafd_${RELEASE_TS}.zip | cut -d ' ' -f1)" >> $GITHUB_ENV
-          echo "Computed checksums:"; echo $TAR_SHA256 Rsafd_${RELEASE_TS}.tar.gz; echo $ZIP_SHA256 Rsafd_${RELEASE_TS}.zip
+          git_sha=$(git rev-parse --short HEAD)
+          tar_sum=$(sha256sum Rsafd.tar.gz | cut -d ' ' -f1)
+            zip_sum=$(sha256sum Rsafd.zip | cut -d ' ' -f1)
+          echo "GIT_SHA=$git_sha" >> $GITHUB_ENV
+          echo "TAR_SHA256=$tar_sum" >> $GITHUB_ENV
+          echo "ZIP_SHA256=$zip_sum" >> $GITHUB_ENV
+          echo "git_sha=$git_sha" >> $GITHUB_OUTPUT
+          echo "tar_sha256=$tar_sum" >> $GITHUB_OUTPUT
+          echo "zip_sha256=$zip_sum" >> $GITHUB_OUTPUT
+          echo "Computed checksums:"; echo $tar_sum Rsafd.tar.gz; echo $zip_sum Rsafd.zip
 
       - name: Create Release
         id: create_release
@@ -75,13 +84,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{ env.RELEASE_TS }}
-          release_name: Release ${{ env.RELEASE_TS }}
+          tag_name: v${{ steps.timestamp.outputs.release_ts }}
+          release_name: Release ${{ steps.timestamp.outputs.release_ts }}
           body: |
-            Timestamp: ${{ env.RELEASE_TS }}
-            Commit: ${{ env.GIT_SHA }}
-            SHA256 (tar.gz): ${{ env.TAR_SHA256 }}
-            SHA256 (zip): ${{ env.ZIP_SHA256 }}
+            Timestamp: ${{ steps.timestamp.outputs.release_ts }}
+            Commit: ${{ steps.checksums.outputs.git_sha }}
+            SHA256 (tar.gz): ${{ steps.checksums.outputs.tar_sha256 }}
+            SHA256 (zip): ${{ steps.checksums.outputs.zip_sha256 }}
           draft: false
           prerelease: false
 
@@ -91,8 +100,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: Rsafd_${{ env.RELEASE_TS }}.tar.gz
-          asset_name: Rsafd_${{ env.RELEASE_TS }}.tar.gz
+          asset_path: Rsafd.tar.gz
+          asset_name: Rsafd.tar.gz
           asset_content_type: application/gzip
 
       - name: Upload .zip to Release
@@ -101,6 +110,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: Rsafd_${{ env.RELEASE_TS }}.zip
-          asset_name: Rsafd_${{ env.RELEASE_TS }}.zip
+          asset_path: Rsafd.zip
+          asset_name: Rsafd.zip
           asset_content_type: application/zip
