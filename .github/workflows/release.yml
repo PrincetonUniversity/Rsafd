@@ -59,9 +59,9 @@ jobs:
         run: |
           set -euo pipefail
           files=$(git ls-files)
-          mkdir ziproot
-          (cd ziproot && for f in $files; do mkdir -p "$(dirname "$f")"; cp -p "../$f" "$f"; done)
-          (cd ziproot && zip -rq ../Rsafd.zip .)
+          mkdir -p ziproot/Rsafd
+          (cd ziproot/Rsafd && for f in $files; do mkdir -p "$(dirname "$f")"; cp -p "../../$f" "$f"; done)
+          (cd ziproot && zip -rq ../Rsafd.zip Rsafd)
           ls -lh Rsafd.zip
 
       - name: Compute checksums and git sha
