@@ -15,7 +15,13 @@ A complete index of exported symbols is available in `INDEX`, while `man/` hosts
 ## Installation
 
 ```r
-# Install from the latest GitHub release
+# Install dependencies first
+install.packages(c(
+  "glasso", "MASS", "plot3D", "qgraph", "quadprog", "quantreg",
+  "robustbase", "scatterplot3d", "splines", "timeDate", "tseries"
+))
+
+# Install Rsafd from the latest GitHub release
 if (.Platform$OS.type == "windows") {
   install.packages(
     "https://github.com/PrincetonUniversity/Rsafd/releases/latest/download/Rsafd.zip",
@@ -29,15 +35,9 @@ if (.Platform$OS.type == "windows") {
     type = "source"
   )
 }
-
-# Or install from a local checkout
-install.packages("/path/to/Rsafd", repos = NULL, type = "source")
 ```
 
-The package requires R 4.2.0 or newer. System requirements match the dependencies declared in `DESCRIPTION`:
-
-- **Imports:** glasso, MASS, plot3D, qgraph, quadprog, quantreg, robustbase, scatterplot3d, splines, timeDate, tseries
-- **Suggests:** lattice
+The package requires R 4.2.0 or newer.
 
 ## Getting started
 
