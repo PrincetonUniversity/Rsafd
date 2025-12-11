@@ -15,11 +15,22 @@ A complete index of exported symbols is available in `INDEX`, while `man/` hosts
 ## Installation
 
 ```r
-# install from GitHub (requires remotes)
-install.packages("remotes")
-remotes::install_github("PrincetonUniversity/Rsafd")
+# Install from the latest GitHub release
+if (.Platform$OS.type == "windows") {
+  install.packages(
+    "https://github.com/PrincetonUniversity/Rsafd/releases/latest/download/Rsafd.zip",
+    repos = NULL,
+    type = "source"
+  )
+} else {
+  install.packages(
+    "https://github.com/PrincetonUniversity/Rsafd/releases/latest/download/Rsafd.tar.gz",
+    repos = NULL,
+    type = "source"
+  )
+}
 
-# or install from a local checkout
+# Or install from a local checkout
 install.packages("/path/to/Rsafd", repos = NULL, type = "source")
 ```
 
