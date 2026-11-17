@@ -1,0 +1,64 @@
+name: conda-env
+
+# Verify the Miniconda instructions: create the Renv environment from each
+# lockfile, install Rsafd from this checkout, and load it with both kernels.
+on:
+  pull_request:
+    paths:
+      - conda/**
+      - scripts/lock-conda.sh
+      - DESCRIPTION
+      - .github/workflows/conda-env.yml
+  push:
+    branches: [main]
+    paths:
+      - conda/**
+      - scripts/lock-conda.sh
+      - DESCRIPTION
+      - .github/workflows/conda-env.yml
+  schedule:
+    - cron: "17 6 1 * *" # monthly: catch packages removed upstream
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  renv:
+    name: ${{ matrix.lockfile }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: macos-latest, lockfile: renv-osx-arm64.txt }
+          - { os: ubuntu-latest, lockfile: renv-linux-x86_64.txt }
+          - { os: ubuntu-24.04-arm, lockfile: renv-linux-aarch64.txt }
+    defaults:
+      run:
+        shell: bash -el {0}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          miniconda-version: latest
+          auto-activate-base: false
+
+      - name: Create Renv from the lockfile
+        # Same command as the README: conda-forge only (no Anaconda ToS prompt)
+        run: conda create -y -n Renv --override-channels -c conda-forge --file conda/${{ matrix.lockfile }}
+
+      - name: Install Rsafd from this checkout
+        run: |
+          conda activate Renv
+          R CMD INSTALL .
+
+      - name: Load Rsafd, kernels and TensorFlow
+        run: |
+          conda activate Renv
+          Rscript -e 'library(Rsafd); stopifnot(length(bscall(TAU = TRGSP[1:3, 3] / 252, K = TRGSP[1:3, 2], S = TRGSP[1:3, 1], R = TRGSP[1:3, 4], SIG = TRGSP[1:3, 5])) == 3); cat("Rsafd", format(packageVersion("Rsafd")), "on", R.version.string, "\n")'
+          jupyter kernelspec list | tee kernels.txt
+          grep -q '^ *ir ' kernels.txt
+          grep -q '^ *python3 ' kernels.txt
+          TF_CPP_MIN_LOG_LEVEL=3 python -c 'import tensorflow as tf, keras; print("TensorFlow", tf.__version__, "Keras", keras.__version__)'

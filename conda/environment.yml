@@ -1,0 +1,39 @@
+# Conda environment for using Rsafd from Jupyter (Python + R kernels).
+# The same package set as the Docker image in docker/jupyter/.
+# Exact, per-platform lockfiles are generated from this file by
+# scripts/lock-conda.sh; users install from those, not from this file.
+name: Renv
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  # R 4.5 (tested in CI as oldrel-1): conda-forge does not yet build r-rgl,
+  # r-keras and r-glasso for R 4.6.
+  - r-base=4.5
+  # Jupyter with Python and R kernels
+  - jupyter
+  - r-irkernel
+  # Python scientific stack
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib
+  - seaborn
+  - scikit-learn
+  - tensorflow
+  - keras
+  # Rsafd dependencies (MASS ships with r-base)
+  - r-plot3d
+  - r-quantreg
+  - r-robustbase
+  - r-timedate
+  - r-tseries
+  # R packages used alongside Rsafd in the course. qgraph is not on
+  # conda-forge; install it with install.packages("qgraph") if needed.
+  - r-reticulate
+  - r-keras
+  - r-rgl
+  - r-glmnet
+  - r-quadprog
+  - r-scatterplot3d
+  - r-glasso
