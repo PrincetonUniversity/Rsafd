@@ -1,0 +1,13 @@
+# Top-level Python packages for the Jupyter image (same set as the former
+# rsafd-docker image). Regenerate the lockfile with scripts/lock-python.sh.
+notebook
+jupyterlab
+ipykernel
+numpy
+pandas
+scipy
+matplotlib
+seaborn
+scikit-learn
+tensorflow
+keras
