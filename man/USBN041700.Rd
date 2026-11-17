@@ -7,7 +7,7 @@ Quotes used in the reference text as illustration of the construction of forward
 \usage{data(USBN041700)}
 \references{R.A. Carmona, Statistical Analysis of Financial Data in R, (2014), Springer Verlag}
 \examples{
-head(USBN041700
+head(USBN041700)
 }
 \keyword{datasets}
 \format{

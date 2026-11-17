@@ -15,15 +15,9 @@
 }
 
 For \code{gpd.lmom} function:
-         \item{\code{location}}{If the value of the GPD location parameter $m$
+         \item{location}{If the value of the GPD location parameter $m$
          is known, it may be specified here.}
-         \item{\code{sampl}}{Numeric vector of data values}.
-
-\strong{OPTIONAL ARGUMENTS}       
-        \item{\code{m}}{Location parameter}
-        \item{\code{lambda}}{Scale parameter}
-        \item{\code{xi}}{Shape parameter (note the sign convention
-       described in \code{SHAPE.XI})}
+         \item{sample}{Numeric vector of data values}.
 }
 \details{  
        The argument of the function should be a vector of L-moments. The function
@@ -39,12 +33,19 @@ For \code{gpd.lmom} function:
        A list containing the field \code{param.est} for the
        L-moment estimates of the location parameters \code{m},
        the scale parameter \code{lambda}, and the shape parameter \code{xi}.
+
+\describe{
+        \item{\code{m}}{Location parameter}
+        \item{\code{lambda}}{Scale parameter}
+        \item{\code{xi}}{Shape parameter (note the sign convention
+       described in \code{SHAPE.XI})}
+}
 }
 \author{Rene Carmona, \email{rcarmona@princeton.edu}}
 \references{
 R. A. Carmona: Statistical Analysis of Financial Data in R, (2014) Springer Verlag}
 \seealso{
-      \code{sample.LMOM}, \code{plotting.position}.
+      \code{sample.LMOM}, \code{plotting.positions}.
        \code{gev.ml}
 }
 \examples{

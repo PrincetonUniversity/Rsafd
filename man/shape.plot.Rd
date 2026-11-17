@@ -1,11 +1,13 @@
 \name{shape.plot}
 \alias{shape.plot}
+\alias{upper.shape.plot}
 \title{ESTIMATE OF XI AS FUNCTION OF THE THRESHOLD}
 \description{
         Plot of estimates of the shape parameter of one tail of the data.
 }
 \usage{
-         shape.plot(data, tail="upper", method = "ml", from = 0.5, to = 0.98, nint = 30)
+shape.plot(data, tail = "upper", method = "ml", from = 0.5, to = 0.98, nint = 30)
+upper.shape.plot(data, method = "ml", from = 0.5, to = 0.98, nint = 30)
 }
 \arguments{
        \item{data}{A numeric vector of values at which the cdf is computed}
@@ -22,6 +24,9 @@
         Plot of the estimates of the shape parameter xi as function of the threshold
         (negative of the threshold for the lower tail). The percentages of points
         exceeding the threshold are given on the upper part of each plot.
+}
+\details{
+        \code{upper.shape.plot} produces the plot for the upper tail only.
 }
 \note{
         Based on Mc Neil's original \code{shape} function.

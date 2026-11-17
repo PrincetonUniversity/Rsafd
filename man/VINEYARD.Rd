@@ -1,5 +1,6 @@
 \name{VINEYARD}
 \alias{VINEYARD}
+\docType{data}
 \title{
 VINEYARD data set
 }
@@ -10,15 +11,14 @@ Classical data set used in a problem of Chapter 5 on nonlinear regression of the
 \references{R.A. Carmona, Statistical Analysis of Financial Data in R, (2014), Springer Verlag}
 \examples{
 data(VINEYARD)
-## maybe str(VINEYARD) ; plot(VINEYARD) ...
 }
 \keyword{datasets}
 \format{
   A data frame with 52 observations on the following 4 variables.
   \describe{
-    \item{\code{Col1}}{a numeric vector}
-    \item{\code{Col2}}{a numeric vector}
-    \item{\code{Col3}}{a numeric vector}
-    \item{\code{Col4}}{a numeric vector}
+    \item{\code{NB}}{a numeric vector}
+    \item{\code{LUGS89}}{a numeric vector}
+    \item{\code{LUGS90}}{a numeric vector}
+    \item{\code{LUGS91}}{a numeric vector}
   }
 }

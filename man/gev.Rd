@@ -20,7 +20,7 @@ generation for the Generalized Extreme Value (GEV) distribution
   \item{q}{vector of quantiles. Missing values (NA's) are allowed}
   \item{p}{vector of probabilities. Missing values (NA's) are allowed}
   \item{n}{sample size. If \code{length(n)} is larger than 1, then \code{length(n)} random values are returned}
-	\item{\strong{Optional Arguments}}{}      
+	\strong{Optional Arguments}      
         \item{m}{Location parameter. Can be a vector (see details)}
         \item{lambda}{Scale parameter. Can be a vector (see details)}
         \item{xi}{Shape parameter (note the sign convention described in \code{SHAPE.XI}). Can be a vector (see details)}

@@ -6,7 +6,8 @@
 intended for plotting purposes.
 }
 \usage{
-twoDkreg(X, Y, B, XPRED = X, FITTED = F, N = 256, lims = apply(X, 2, range), X1NAME = "X1", X2NAME = "X2", YNAME = "Y", PLOT = T)
+twoDkreg(X, Y, B, XPRED = X, FITTED = FALSE, N = 256, lims = apply(X, 2, range),
+         X1NAME = "X1", X2NAME = "X2", YNAME = "Y", PLOT = TRUE)
 }
 \arguments{
   \item{X}{ a n x 2 numeric matrix giving the n observations of the two explanatory variables }

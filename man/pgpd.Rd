@@ -3,6 +3,15 @@
 \alias{dgpd}
 \alias{qgpd}
 \alias{rgpd}
+\alias{pgpd,gpd.upper.tail-method}
+\alias{pgpd,gpd.lower.tail-method}
+\alias{pgpd,gpd.two.tails-method}
+\alias{dgpd,gpd.upper.tail-method}
+\alias{dgpd,gpd.lower.tail-method}
+\alias{dgpd,gpd.two.tails-method}
+\alias{qgpd,gpd.upper.tail-method}
+\alias{qgpd,gpd.lower.tail-method}
+\alias{qgpd,gpd.two.tails-method}
 \title{RANDOM GENERATOR, DENSITY, CUMULATIVE DISTRIBUTION AND QUANTILE FUNCTIONS OF A GPD OBJECT}
 \description{
         Random number generator, density, cumulative distribution function and quantiles for the distribution
@@ -10,36 +19,43 @@
         procedure \code{fit.gpd}).
 }
 \usage{
-	rgpd(object,n)
-        pgpd(object,x)
-	dgpd(object,x)
-        qgpd(object,p)
+rgpd(dist, n = 50)
+pgpd(dist, x)
+dgpd(dist, x)
+qgpd(dist, x)
 }
 \arguments{
        \item{n}{Integer giving the size of the desired random sample}
-       \item{x}{A numeric vector of values at which the density and the cdf are computed}
-       \item{p}{A numeric vector of probabilities at which the quantiles are computed}
-       \item{object}{An object of class \code{gpd} like the output of \code{fit.gpd}.}
+       \item{x}{A numeric vector of values at which the density and the cdf are computed
+         (\code{pgpd}, \code{dgpd}), or a numeric vector of probabilities at which
+         the quantiles are computed (\code{qgpd})}
+       \item{dist}{An object of class \code{gpd} like the output of \code{fit.gpd}.}
 }
 \value{
        Function \code{rgpd}  returns a vector of 
        length \code{n} comprising independent samples from the distribution 
-       determined by \code{object} 
+       determined by \code{dist} 
        
        Functions \code{dgpd} and \code{pgpd} return a vector of the same 
        length as \code{x} comprising the values of the density and the cumulative distribution 
-       function of the distribution determined by \code{object} computed at the
+       function of the distribution determined by \code{dist} computed at the
         points \code{x}.
 
        Function \code{gqpd}  returns a vector of the same 
-       length as \code{p} comprising the values of the quantiles of the distribution 
-       determined by \code{object} computed at the points \code{p}. It returns NA for p = 0
+       length as \code{x} comprising the values of the quantiles of the distribution 
+       determined by \code{dist} computed at the points \code{x}. It returns NA for p = 0
 		and Inf for p = 1. So it is recommended to avoid these values.
 }
 \author{Rene Carmona, \email{rcarmona@princeton.edu}}
 \references{R.A. Carmona, Statistical Analysis of Financial Data in R, (2014), Springer Verlag}
 \seealso{
  \code{\link{fit.gpd}}
+}
+\section{Methods}{
+\code{pgpd}, \code{dgpd} and \code{qgpd} have methods for the classes
+\code{gpd.upper.tail}, \code{gpd.lower.tail} and \code{gpd.two.tails}
+(see \linkS4class{gpd}). The methods for \code{rgpd} are listed in
+\code{\link{rgpd-methods}}.
 }
 \examples{
 # One tail

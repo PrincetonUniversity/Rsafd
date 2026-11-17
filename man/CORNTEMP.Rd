@@ -1,5 +1,7 @@
 \name{CORNTEMP}
 \alias{CORNTEMP}
+\docType{data}
+\usage{data(CORNTEMP)}
 \title{Corn and Temperature Data}
 \description{
 Monthly price of corn in Iowa and temperature data in Des Moines to illustrate the dependence of the two via regression, and justify the use of temperature options to hedge commodity price risk. These data are used in a problem at the end of Chapter 4 of the textbook. 
@@ -22,6 +24,6 @@ R. A. Carmona: Statistical Analysis of Financial Data in R, (2014) Springer Verl
   \describe{
     \item{\code{MCorn}}{Monthly price of a bushel of corn in Iowa}
     \item{\code{MDMHDD}}{Monthly average of the number of heating degree days in Des Moines as measured at the meteorological station of the airport.} 
-    \item{\code{MDMHDD}}{Monthly average of the number of cooling degree days in Des Moines as measured at the meteorological station of the airport.} 
+    \item{\code{MDMCDD}}{Monthly average of the number of cooling degree days in Des Moines as measured at the meteorological station of the airport.} 
   }
 }

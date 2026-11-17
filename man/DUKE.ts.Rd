@@ -1,6 +1,16 @@
 \name{DUKE.ts}
 \alias{DUKE.ts}
 \alias{DYNEGY.ts}
+\alias{TXU.ts}
+\alias{SO.ts}
+\docType{data}
+\usage{
+data(DUKE.ts)
+data(DYNEGY.ts)
+data(TXU.ts)
+data(SO.ts)
+}
+\format{Objects of class \code{timeSeries} with one column each.}
 \title{
 Time series of the daily closing prices of Energy Companies 
 }

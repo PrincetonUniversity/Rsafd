@@ -19,6 +19,7 @@ between the uniformly distributed samples x and y
 \author{Rene Carmona, \email{rcarmona@princeton.edu}}
 \references{ R. A. Carmona: Statistical Analysis of Financial Data in R, (2014) Springer Verlag, Chapter 3}
 \examples{
+set.seed(1)
 U <- runif(1024) # Generates a uniform sample of size 1024
 V <- runif(1024) # Generates a uniform sample of size 1024
 

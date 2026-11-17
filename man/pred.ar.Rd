@@ -1,6 +1,9 @@
 \name{pred.ar}
 \alias{pred.ar}
 \title{ Compute Predictions for an AR Model }
+\description{
+Compute predictions from an AR model fitted to a time series.
+}
 \usage{
 pred.ar(series, ar.est, ahead = 1)
 }

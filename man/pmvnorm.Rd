@@ -1,20 +1,19 @@
 \name{pmvnorm}
 \alias{pmvnorm}
 \alias{qmvnorm}
-\alias{rmvnorm}
 \title{
 Functions giving the values of the cdf and quantile and producing random samples of a multivariate distribution function
 }
+\description{
+Compute the values of the cumulative distribution function of a multivariate normal distribution.
+}
 \usage{
-pmvnorm(x, mean = rep(0, d), cov = diag(d), sd, rho, d = 2, sigma = cov, log = FALSE)
-pmvnorm(n, mean = rep(0, d), cov = diag(d), sd, rho, d = 2, sigma = cov, log = FALSE)
+pmvnorm(x, mean = rep(0, d), cov = diag(d), sd, rho, d = 2, sigma = cov,
+        log = FALSE)
 }
 \arguments{
   \item{x}{
 numeric vector of the values where the function is to be evaluated
-}
-  \item{n}{
-integer giving the number of desired random samples
 }
   \item{mean}{
 numeric vector giving the mean of the distribution
@@ -29,6 +28,12 @@ Pearson correlation coefficient in the case of dimension 2
 }
   \item{d}{
 dimension of the distribution
+}
+  \item{sigma}{
+same as \code{cov}
+}
+  \item{log}{
+logical, not used in the computation
 }
 }
 \author{

@@ -7,8 +7,8 @@
       and GEV distributions.
 }
 \usage{
-         gev.ml(sample, init.est = <<see below>>, epsilon = 1e-005)
-         gpd.ml(sample, location = NA, init.est = <<see below>>, epsilon=1e-005)
+         gev.ml(sample, init.est = NA, epsilon = 1e-05)
+         gpd.ml(sample, location = NA, init.est = NA, epsilon = 1e-06)
 }
 \arguments{ 
          \item{sample}{Numerical vector of data values. Missing values (NA's) are not allowed}
@@ -21,11 +21,13 @@
          computed and used for initialization purposes.}
          \item{epsilon}{The relative tolerance of the optimization
          routine in the maximization of the likelihood. 
-         The default value is 10^{-5}.}
-         \item{location}{(for \code{gpd.lm} only) \code{epsilon}}
+         The default value is \eqn{10^{-5}}{10^(-5)} for \code{gev.ml}
+         and \eqn{10^{-6}}{10^(-6)} for \code{gpd.ml}.}
+         \item{location}{(for \code{gpd.ml} only)
          If the location parameter \code{m} of a GPD
          is known, it may be specified here. The remaining two parameters
          will then be estimated by maximum likelihood.}
+}
 \details{  
       These functions compute the log-likelihood from the sample data, and 
       then find the parameters which maximize
@@ -46,7 +48,7 @@
 \references{
 R. A. Carmona: Statistical Analysis of Financial Data in R, (2014) Springer Verlag, Chapter 2}
 \seealso{
-  \code{\link{gev.lmom}}, \code{\link{estimate.mix.gev}}
+  \code{\link{gev.lmom}}
 }
 \examples{
 x <- rgev(500, lambda = 3.5, xi = 0.4)

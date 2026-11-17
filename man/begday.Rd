@@ -1,17 +1,19 @@
 \name{begday}
 \alias{begday}
 \alias{noon}
+\alias{begday,timeDate-method}
+\alias{noon,timeDate-method}
 \title{Manipulation of timeDate Objects}
 \description{
   Given a timeDate, compute the timeDate corresponding to the beginning 
 of the day, or noon, on the day identified by timeDate
 }
 \usage{
-begday(DAY)
-noon(DAY)
+begday(object)
+noon(object)
 }
 \arguments{
-  \item{DAY}{ a timeDate object }
+  \item{object}{ a timeDate object }
 }
 \value{  
   \item{begday}{A timeDate with the same year, month and day and hour:minute:second equal to 00:00:00}
@@ -21,6 +23,7 @@ noon(DAY)
 \references{
 R. A. Carmona: Statistical Analysis of Financial Data in R, (2014) Springer Verlag}
 \examples{
+library(timeDate)
 DAYCUT <- timeDate("02/15/1990")
 noon(DAYCUT)
 }

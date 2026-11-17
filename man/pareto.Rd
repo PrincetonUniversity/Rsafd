@@ -20,7 +20,7 @@
          \item{p}{vector of probabilities. Missing values (NA's) are allowed}
          \item{n}{sample size. If \code{length(n)} is larger than 1, then \code{length(n)} random values are returned}
 
-\item{\strong{Optional Arguments}}{}      
+\strong{Optional Arguments}      
         \item{m}{Location parameter}
         \item{lambda}{Scale parameter}
         \item{xi}{Shape parameter (note the sign convention described in \code{SHAPE.XI})}

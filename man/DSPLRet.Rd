@@ -9,7 +9,7 @@ for illustration purposes}
 \references{
 R. A. Carmona: Statistical Analysis of Financial Data in R, (2014) Springer Verlag, Chapter 1 & Chapter 2}
 \examples{
-hist(DSPLRet,col="blue",freq=F,ylim=c(0,30))
+hist(DSPLRet,col="blue",freq=FALSE,ylim=c(0,30))
 DENS <- density(DSPLRet, adjust=12)
 }
 \keyword{datasets}

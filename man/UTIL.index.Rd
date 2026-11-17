@@ -3,13 +3,15 @@
 \alias{ENRON.index}
 \alias{DUKE.index}
 \alias{UTILITY.index}
+\docType{data}
 \title{Utilities Indexes}
 \description{
 Indexes computed daily in 1993 for DUKE, ENRON and the Utility sector. In the case of Enron and Duke, the index is merely the value of the stock multiplied by a factor appropriately chosen so that the resulting value is exactly 100 on a day chosen to initialize the index. These data are used in the textbook "R. A. Carmona: Statistical Analysis of Financial Data in R, (2013) Springer Verlag" to illustrate the problems with time series regression.}
 \usage{
-head(UTIL.index)
-head(DUKE.index)
-head(ENRON.index)
+data(UTIL.index)
+data(DUKE.index)
+data(ENRON.index)
+data(UTILITY.index)
 }
 \details{
 \code{
@@ -24,7 +26,7 @@ head(ENRON.index)
 }
 \references{R.A. Carmona, Statistical Analysis of Financial Data in R, (2014), Springer Verlag}
 \examples{
-plot(DUKE.index,UTIL.index)
+plot(DUKE.index,UTILITY.index)
 }
 \keyword{datasets}
 \format{

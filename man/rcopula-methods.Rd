@@ -16,76 +16,75 @@
 \alias{rcopula,normal.copula-method}
 \alias{rcopula,normal.mix.copula-method}
 \alias{rcopula,tawn.copula-method}
-\title{ ~~ Methods for Function \code{rcopula} in Package \pkg{Rsafd} ~~}
+\title{Methods for Function \code{rcopula} in Package \pkg{Rsafd}}
 \description{
- ~~ Methods for function \code{rcopula} in package \pkg{Rsafd} ~~
+ Methods for function \code{rcopula} in package \pkg{Rsafd}
 }
 \section{Methods}{
 \describe{
 
 \item{\code{signature(copula = "bb1.copula")}}{
-%%  ~~describe this method here~~
+generate a random sample of size \code{n} from the copula
 }
 
 \item{\code{signature(copula = "bb2.copula")}}{
-%%  ~~describe this method here~~
+generate a random sample of size \code{n} from the copula
 }
 
 \item{\code{signature(copula = "bb3.copula")}}{
-%%  ~~describe this method here~~
+generate a random sample of size \code{n} from the copula
 }
 
 \item{\code{signature(copula = "bb4.copula")}}{
-%%  ~~describe this method here~~
+generate a random sample of size \code{n} from the copula
 }
 
 \item{\code{signature(copula = "bb5.copula")}}{
-%%  ~~describe this method here~~
+generate a random sample of size \code{n} from the copula
 }
 
 \item{\code{signature(copula = "bb6.copula")}}{
-%%  ~~describe this method here~~
+generate a random sample of size \code{n} from the copula
 }
 
 \item{\code{signature(copula = "bb7.copula")}}{
-%%  ~~describe this method here~~
+generate a random sample of size \code{n} from the copula
 }
 
 \item{\code{signature(copula = "frank.copula")}}{
-%%  ~~describe this method here~~
+generate a random sample of size \code{n} from the copula
 }
 
 \item{\code{signature(copula = "galambos.copula")}}{
-%%  ~~describe this method here~~
+generate a random sample of size \code{n} from the copula
 }
 
 \item{\code{signature(copula = "gumbel.copula")}}{
-%%  ~~describe this method here~~
+generate a random sample of size \code{n} from the copula
 }
 
 \item{\code{signature(copula = "husler.reiss.copula")}}{
-%%  ~~describe this method here~~
+generate a random sample of size \code{n} from the copula
 }
 
 \item{\code{signature(copula = "joe.copula")}}{
-%%  ~~describe this method here~~
+generate a random sample of size \code{n} from the copula
 }
 
 \item{\code{signature(copula = "kimeldorf.sampson.copula")}}{
-%%  ~~describe this method here~~
+generate a random sample of size \code{n} from the copula
 }
 
 \item{\code{signature(copula = "normal.copula")}}{
-%%  ~~describe this method here~~
+generate a random sample of size \code{n} from the copula
 }
 
 \item{\code{signature(copula = "normal.mix.copula")}}{
-%%  ~~describe this method here~~
+generate a random sample of size \code{n} from the copula
 }
 
 \item{\code{signature(copula = "tawn.copula")}}{
-%%  ~~describe this method here~~
+generate a random sample of size \code{n} from the copula
 }
 }}
 \keyword{methods}
-\keyword{ ~~ other possible keyword(s) ~~ }

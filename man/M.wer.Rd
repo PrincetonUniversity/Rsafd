@@ -6,7 +6,12 @@
 \description{
  Numeric vector giving the weekly excess returns for a market portfolio excess returns constructed from the S&P 500 index. The vectors M1.wer and M2.wer are subsets of M.wer covering disjoint periods discussed in the reference text. 
 }
-\usage{data(DUKE.wer)}
+\docType{data}
+\usage{
+data(M.wer)
+data(M1.wer)
+data(M2.wer)
+}
 \references{
 R.A. Carmona, Statistical Analysis of Financial Data in R, (2014), Springer Verlag
 }

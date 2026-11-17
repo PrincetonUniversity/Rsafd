@@ -1,6 +1,9 @@
 \name{garch}
 \alias{garch}
 \title{Fit a GARCH Model to a Time Series or a Vector}
+\description{
+Fit a GARCH model to a numeric vector or a timeSeries object.
+}
 \usage{garch(x, order = c(1, 1), series = NULL, control = garch.control(...), ...)}
 \arguments{
   \item{x}{Input time series, a numeric vector or a timeSeries object}
@@ -32,7 +35,7 @@ R. A. Carmona: Statistical Analysis of Financial Data in R, (2014) Springer Verl
 \examples{
 LRET <- diff(log(EnronIndex.ts))
 LRET.ar <- ar(LRET) 
-LRES.g <- garch(LRET.ar$resid)
+LRES.g <- garch(LRET.ar$resid[!is.na(LRET.ar$resid)])
 plot(LRES.g$sigma.t)
  }
 \keyword{univar}

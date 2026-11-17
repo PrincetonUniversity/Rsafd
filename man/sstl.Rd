@@ -1,11 +1,12 @@
 \name{sstl}
 \alias{sstl}
+\alias{sstl,timeSeries-method}
 \title{ Decomposition of a timeSeries Object into Trend, Seasonal and Remainder Components }
 \description{
   Decomposition of a univariate timeSeries object based on the base function stl
 }
 \usage{
-sstl(SERIES, FREQ = 365, TWIND = 0.75, TDEGREE = 0)
+sstl(SERIES, FREQ = 365, TWIND = 0.05, TDEGREE = 0)
 }
 \arguments{
   \item{SERIES}{ Univariate timeSeries object to be decomposed}

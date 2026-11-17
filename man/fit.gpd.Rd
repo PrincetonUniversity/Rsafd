@@ -8,11 +8,12 @@
       of a generalized Pareto distribution.
 }
 \usage{
-         fit.gpd(data, tail="two", upper = NA, lower = NA, upper.method ="ml", lower.method="ml", plot = T, ...)
+fit.gpd(data, tail = "two", upper = NA, lower = NA, upper.method = "ml",
+        lower.method = "ml", plot = TRUE, ...)
 }
 \arguments{ 
 	\item{data}{A numerical vector of sample data values}
-	\item{\strong{Optional Arguments}}{}
+	\strong{Optional Arguments}
         	\item{tail}{Character string which can be "two" if two tails are estimated, "upper" if the upper tail is estimated, and "lower" if the lower tail is estimated} 
        	\item{upper}{The value of the upper threshold. A Generalized Pareto 
            distribution is fitted to the data exceeding this threshold.
@@ -34,6 +35,7 @@
            against the quantiles of the GPD with the same shape parameter xi
            is produced. The fact that the points line up supports the assumption about the
            (generalized) Pareto nature of the tail in question.}
+       \item{\dots}{additional arguments, currently not used}
 }
 \value{    
        The value of \code{fit.gpd} is an object of class \code{gpd}
@@ -57,7 +59,7 @@ with \code{FinMetrics}.
 \references{
 R. A. Carmona: Statistical Analysis of Financial Data in R, (2014) Springer Verlag}
 \seealso{
-\code{\link{gpd}},\code{\link{gpd.ml}}, \code{\link{gpd.lmom}}}
+\linkS4class{gpd},\code{\link{gpd.ml}}, \code{\link{gpd.lmom}}}
 \examples{
 SHAPE.XI <- TRUE
 data(BCofLRet)

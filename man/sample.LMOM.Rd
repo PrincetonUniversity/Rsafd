@@ -21,10 +21,10 @@
   \code{\link{gev.lmom}}
 }
 \examples{
-x <- rgpd(1000)
+x <- rpareto(1000)
 sample.LMOM(x) #Compute L-moments of the sample
-Mean (l_1) L-mom 2 (l_2)    L-skewness    L-kurtosis 
- 1.0144528     0.5045187     0.3278689     0.1626310 
+#Mean (l_1) L-mom 2 (l_2)    L-skewness    L-kurtosis 
+# 1.0144528     0.5045187     0.3278689     0.1626310 
 
 # Theoretical L-Moments of GPD with parameters
 # m=0, lambda = 1, and k = 0 are:

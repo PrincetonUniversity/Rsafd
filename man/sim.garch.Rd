@@ -5,7 +5,8 @@
 \description{
 Generates sample scenarios for a GARCH model}
 \usage{
-sim.garch(model, n.ahead = 1024, n.start = 0, n.sim = 1, presigmat = NA, preXt = NA, innovations = NA)
+sim.garch(model, n.ahead = 1024, n.start = 0, n.sim = 1, presigmat = NA,
+          preXt = NA, innovations = NA)
 }
 \arguments{
   \item{model}{A list comprising a number sig2 for the mean volatility, a vector ar containing the AR coefficients and a vector ma containing the MA coefficients}
@@ -30,12 +31,13 @@ Returns a list comprising
 \examples{
 LRET <- diff(log(EnronIndex.ts))
 LRET.ar <- ar(LRET) 
-LRES.g <- garch(LRET.ar$resid)
+LRES.g <- garch(LRET.ar$resid[!is.na(LRET.ar$resid)])
 plot(LRES.g$sigma.t)
 
 MODEL <- list(sig2=LRES.g$coef[1],ma=LRES.g$coef[2],ar=LRES.g$coef[3])
-PRESIG <- seriesData(LRES.g$sigma.t)[LL-1]
-PREX <- FITTED[LL-1]
+LL <- length(LRES.g$sigma.t)
+PRESIG <- LRES.g$sigma.t[LL-1]
+PREX <- LRES.g$fitted.values[LL-1]
 SIM <- sim.garch(model=MODEL,n.ahead = 1024, n.start = 0, n.sim = 1, presigmat=PRESIG, preXt=PREX )
 
 LRES.sim <- sim.garch(model=MODEL,n.ahead = 1024, n.start = 1000, n.sim = 1)

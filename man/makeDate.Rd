@@ -3,6 +3,10 @@
 \title{
 Function returning an object of class timeDate from a character string
 }
+\description{
+Convert character strings representing dates in one of several formats into
+character strings in the format Y-m-d.
+}
 \usage{
 makeDate(x, in.format = "d-m-y")
 }

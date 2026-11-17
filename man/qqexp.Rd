@@ -28,7 +28,7 @@ if the sample distribution was indeed from the exponential or normal family.
 TST <- rnorm(1024)
 qqnorm(TST)
 
-TST <- rgpd(1024)
+TST <- rpareto(1024)
 qqnorm(TST)
 }
 \keyword{distribution}

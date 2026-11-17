@@ -14,8 +14,16 @@ of the various non-parametric regression methods discussed in R.A.Carmona, Stati
 Financial Data in S-Plus. The performance of these regression methods are compared 
 on corresponding test samples TSTSPxx.
 }
-\usage{data(TRGSP),data(TRGSP2000),data(TRGSP2),data(TRGSP3)
-data(TSTSP),data(TSTSP2000),data(TSTSP2),data(TSTSP3)
+\docType{data}
+\usage{
+data(TRGSP)
+data(TRGSP2000)
+data(TRGSP2)
+data(TRGSP3)
+data(TSTSP)
+data(TSTSP2000)
+data(TSTSP2)
+data(TSTSP3)
 }
 \references{R.A. Carmona, Statistical Analysis of Financial Data in R, (2014), Springer Verlag}
 \examples{

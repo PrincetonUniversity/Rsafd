@@ -6,7 +6,8 @@
 of a bivariate distribution
 }
 \usage{
-bivd(cop, marginX = "unif", marginY = marginX, param.marginX = c(0, 1), param.marginY = param.marginX)
+bivd(cop, marginX = "unif", marginY = marginX, param.marginX = c(0, 1),
+     param.marginY = param.marginX)
 }
 \arguments{
   \item{cop}{ Object of class copula }

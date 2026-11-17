@@ -6,7 +6,8 @@ Perform a two-dimensional kernel density estimation with a Gaussian
 kernel.
 }
 \usage{
-kdest(X, Y, H, N = 256, lims = c(range(X), range(Y)), COND = 0, PLOT = T, XNAME = "X", YNAME = "Y")
+kdest(X, Y, H, N = 256, lims = c(range(X), range(Y)), COND = 0, PLOT = TRUE,
+      XNAME = "X", YNAME = "Y")
 }
 \arguments{
   \item{X}{ Numeric vector giving a sample from the first variable }

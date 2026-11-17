@@ -1,10 +1,16 @@
 \name{WSP}
 \alias{WSP}
 \alias{WSPLRet}
+\alias{WSP.ts}
+\docType{data}
 \title{ Weekly quotes of the S&P 500 Index}
 \description{ Weekly quotes of the S&P 500 index
 from January 4, 1960 to June 2, 2003.}
-\usage{data(WSP),data(WSPLR), data(WSP.lts),  }
+\usage{
+data(WSP)
+data(WSPLRet)
+data(WSP.ts)
+}
 \references{
 R.A. Carmona, Statistical Analysis of Financial Data in R, (2014), Springer Verlag
 }
@@ -23,4 +29,5 @@ of WSPLR used in Subsection 1.7.3 of the textbook as example, and WSP.lts is a l
 WSP.ts$pos containing the dates, and a component WSP.ts$data containing the entries of WSP.
 This format is suitable for the function timeSeriesFromList which will create an object of class
 timeSeries. See example below.
+\code{WSP.ts} is an object of class timeSeries with the 3163 entries of \code{WSP}.
 }
