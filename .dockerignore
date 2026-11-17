@@ -1,0 +1,14 @@
+.git
+.github
+*.Rcheck
+Rsafd_*.tar.gz
+Rsafd_*.tgz
+Rsafd_*.zip
+.Rhistory
+.RData
+.DS_Store
+.env*
+CLAUDE.md
+.claude
+**/__pycache__
+**/.ipynb_checkpoints

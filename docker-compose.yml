@@ -1,0 +1,50 @@
+# Local and CI entry points. Source is bind-mounted read-only; builds happen in /tmp.
+#   docker-compose run --rm check     # R CMD check --as-cran, fails on WARNING/ERROR
+#   docker-compose run --rm test      # testthat suite
+#   docker-compose run --rm lint      # lintr
+#   docker-compose up jupyter         # student Jupyter image built from this checkout
+services:
+  check:
+    build:
+      context: .
+      target: check
+    image: rsafd-check:local
+    volumes:
+      - .:/work/Rsafd:ro
+    command: ["check"]
+    network_mode: none
+
+  test:
+    image: rsafd-check:local
+    build:
+      context: .
+      target: check
+    volumes:
+      - .:/work/Rsafd:ro
+    command: ["test"]
+    network_mode: none
+
+  lint:
+    image: rsafd-check:local
+    build:
+      context: .
+      target: check
+    volumes:
+      - .:/work/Rsafd:ro
+    command: ["lint"]
+    network_mode: none
+
+  jupyter:
+    build:
+      context: .
+      dockerfile: docker/jupyter/Dockerfile
+      args:
+        GIT_SHA: ${GIT_SHA:-local}
+    image: rsafd-jupyter:local
+    network_mode: bridge
+    ports:
+      - "127.0.0.1:${JUPYTER_PORT:-8888}:8888"
+    environment:
+      JUPYTER_LINK_ONLY: "1"
+    volumes:
+      - ${RSAFD_NOTEBOOKS:-./notebooks}:/workspace/notebooks
