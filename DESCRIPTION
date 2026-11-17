@@ -1,19 +1,43 @@
 Package: Rsafd
-Version: 1.0.1
-Date: 2025-08-26
+Type: Package
 Title: Statistical Analysis of Financial Data in R
-Author: Rene Carmona
-Maintainer: Rene Carmona <rcarmona@princeton.edu>
-Depends: R (>= 4.2.0)
-Imports: glasso, MASS, plot3D, qgraph, quadprog, quantreg, robustbase,
-        scatterplot3d, splines, timeDate, tseries
-Suggests: lattice
-Description: This package was developed for the book 'Statistical Analysis
-        of Financial Data in R'. It provides the functions and the data sets
-        used in the book.
-LazyLoad: yes
-LazyData: yes
+Version: 1.1.0
+Authors@R: c(
+    person("Rene", "Carmona", email = "rcarmona@princeton.edu",
+           role = c("aut", "cre")))
+Description: Functions and data sets accompanying the book 'Statistical
+    Analysis of Financial Data in R' by Rene Carmona (2014,
+    <doi:10.1007/978-1-4614-8788-3>). Includes tools for heavy-tailed
+    distributions and extreme value analysis, copulas, nonparametric
+    smoothing, time series models, and fixed-income and option pricing
+    utilities.
 License: MIT + file LICENSE
-URL: https://carmona.princeton.edu/orf505/Rsafd.zip
+URL: https://github.com/PrincetonUniversity/Rsafd
+BugReports: https://github.com/PrincetonUniversity/Rsafd/issues
+Depends:
+    R (>= 4.2.0)
+Imports:
+    graphics,
+    MASS,
+    methods,
+    plot3D,
+    quantreg,
+    robustbase,
+    stats,
+    timeDate,
+    tseries,
+    utils
+Suggests:
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
 Encoding: UTF-8
-NeedsCompilation: yes
+LazyData: true
+LazyDataCompression: xz
+NeedsCompilation: no
+Collate:
+    Financial.R
+    Univariate.R
+    Multivariate.R
+    Smoothing.R
+    timeSeries.R
+    native-ports.R

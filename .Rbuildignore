@@ -1,0 +1,13 @@
+^\.github$
+^\.lintr$
+^\.dockerignore$
+^Dockerfile$
+^docker$
+^docker-compose\.yml$
+^LICENSE\.md$
+^scripts$
+^tools$
+^.*\.Rproj$
+^\.Rproj\.user$
+^\.env.*$
+^example\.env$

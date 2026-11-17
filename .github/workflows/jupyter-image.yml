@@ -1,0 +1,45 @@
+name: jupyter-image
+
+# Build (without pushing) the Jupyter image whenever its inputs change, so a
+# broken image is caught before release. Publishing happens in release.yml.
+on:
+  pull_request:
+    paths:
+      - docker/jupyter/**
+      - scripts/install-deps.R
+      - DESCRIPTION
+      - .github/workflows/jupyter-image.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: build (${{ matrix.platform }})
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { platform: linux/amd64, runner: ubuntu-24.04 }
+          - { platform: linux/arm64, runner: ubuntu-24.04-arm }
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Build image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: docker/jupyter/Dockerfile
+          platforms: ${{ matrix.platform }}
+          push: false
+          load: true
+          tags: rsafd-jupyter:ci
+          build-args: |
+            GIT_SHA=${{ github.sha }}
+
+      - name: Healthcheck
+        run: docker run --rm --entrypoint /usr/local/bin/healthcheck rsafd-jupyter:ci

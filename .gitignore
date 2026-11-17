@@ -1,0 +1,24 @@
+# R build/check output
+*.Rcheck/
+Rsafd_*.tar.gz
+Rsafd_*.tgz
+Rsafd_*.zip
+.Rhistory
+.RData
+.Rproj.user/
+build/
+
+# Environment and secrets
+.env*
+!example.env
+
+# Misc
+.DS_Store
+node_modules/
+__pycache__/
+*.db
+
+# Local agent config (never commit)
+CLAUDE.md
+.claude/
+/notebooks/
