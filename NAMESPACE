@@ -1,16 +1,18 @@
-import(timeDate) 
-import(quadprog) 
-import(quantreg) 
-import(plot3D)
-import(robustbase)
-import(scatterplot3d) 
-import(splines)
-import(glasso)
-import(qgraph)
+import(methods)
+import(timeDate, except = c("abline", "lines", "points"))
+importFrom(graphics, abline, axis, boxplot, contour, grid, hist, legend, lines,
+           par, points, title)
+importFrom(stats, acf, approx, approxfun, ar, arima, as.ts, cooks.distance,
+           cor, cov2cor, covratio, density, dnorm, ecdf, embed, hatvalues,
+           integrate, lm, mahalanobis, na.fail, nlm, nlminb, optim, pchisq,
+           pnorm, ppoints, qexp, qnorm, quantile, rnorm, rstandard, rstudent,
+           runif, stl, supsmu, ts, uniroot, var)
 importFrom(utils, head, tail)
-importFrom(stats,ts,acf,ar,arima,as.ts,stl)
-importFrom(tseries,garch,adf.test)
-importFrom(MASS,bandwidth.nrd)
+importFrom(MASS, bandwidth.nrd)
+importFrom(plot3D, mesh, persp3D)
+importFrom(quantreg, rq)
+importFrom(robustbase, lmrob)
+importFrom(tseries, adf.test, garch.control)
 
 exportClasses("gpd","gpd.upper.tail","gpd.lower.tail","gpd.two.tails","copula","empirical.copula","normal.copula","frank.copula","kimeldorf.sampson.copula","gumbel.copula","galambos.copula","husler.reiss.copula","tawn.copula","bb5.copula","normal.mix.copula","bb1.copula","bb2.copula","bb3.copula","bb6.copula","bb7.copula","joe.copula","bb4.copula", "bivd", "empirical.bivd","gpd.bivd","timeSeries")
 
@@ -19,8 +21,6 @@ exportMethods("pgpd", "qgpd", "dgpd", "rgpd", "plot", "tailplot", "show", "tail.
 "persp.dcopula","contour.pbivd", "contour.dbivd", "persp.pbivd", "persp.dbivd", "seriesPositions", "seriesData", "seriesUnits", 
 "is.timeSeries","head","tail","diff", "Math", "Arith", "Ops", "merge", "begday", "noon","concat","sstl")
 
-#exportMethods( "A", "CondCinverse", "Phi", "PhiDer", "Hderiv", "AfirstDer", "AsecondDer", "InvPhi", "InvPhifirstDer",
-#"InvPhisecondDer","DerPhi.minus1","dcdx")
 
 export(rmvgaussian.copula,normal.copula,normal.mix.copula,kimeldorf.sampson.copula,
 gumbel.copula,galambos.copula,husler.reiss.copula,tawn.copula,joe.copula,frank.copula,archm.copula,
@@ -32,12 +32,4 @@ kalman, kdest,Kend.table, kreg, l1fit, lm.diag, makeDate, p2Dnorm,
 pgev,   plotting.positions, pred.ar, qgev, qqexp, qqnorm, rgev, rmvnorm, sample.LMOM, upper.shape.plot,
 shape.plot, sim.garch,  timeSeries, timeSeriesFromList, twoDkreg, VaR.sim, yns, acf.timeSeries,arima.timeSeries,as.ts.timeSeries)
 
-#export(head.timeSeries, tail.timeSeries,rmvgaussian.copula,normal.copula,normal.mix.copula,kimeldorf.sampson.copula,
-#gumbel.copula,galambos.copula,husler.reiss.copula,tawn.copula,joe.copula,frank.copula,archm.copula,
-#bb1.copula,bb2.copula,bb3.copula,bb4.copula,bb5.copula,bb6.copula,
-#bivd, block.max, bns, bscall, DF.test, dgev, dmvnorm, diff.timeSeries,dump.timeSeries, eda.shape,
-#empirical.copula, fit.copula, fit.gpd, fns, garch, gev.lmom, gev.ml,gpd.lmom,gpd.ml,
-#gpd.1p,gpd.1q,gpd.2p,gpd.2q,ppareto,qpareto,dpareto,rpareto,isig, 
-#kalman, kdest,Kend.table, kreg, l1fit, lm.diag, makeDate, merge.timeSeries, p2Dnorm,
-#pgev,   plotting.positions, pred.ar, qgev, qqexp, qqnorm, rgev, rmvnorm, sample.LMOM, upper.shape.plot,
-#shape.plot, sim.garch,  timeSeries, timeSeriesFromList, twoDkreg, VaR.sim, yns, acf.timeSeries,arima.timeSeries,as.ts.timeSeries)
+S3method(as.ts, timeSeries)
