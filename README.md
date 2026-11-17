@@ -18,6 +18,8 @@ Run `help(package = "Rsafd")` for the full index of functions and data sets.
 
 Rsafd requires R 4.2.0 or newer. Each release is tested on macOS, Windows and Ubuntu with the current and the previous R release.
 
+On macOS, install [XQuartz](https://www.xquartz.org) first. Rsafd's 3D plots use the plot3D package, which loads R's tcltk package, and tcltk needs XQuartz's X11 library on macOS.
+
 ```r
 # Dependencies (from CRAN)
 install.packages(c("MASS", "plot3D", "quantreg", "robustbase", "timeDate", "tseries"))

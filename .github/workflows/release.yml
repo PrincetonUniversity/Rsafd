@@ -80,6 +80,9 @@ jobs:
         with:
           use-public-rspm: true
       - uses: r-lib/actions/setup-r-dependencies@v2
+      - name: XQuartz for tcltk (macOS)
+        if: runner.os == 'macOS'
+        run: brew install --cask xquartz
       - uses: actions/download-artifact@v4
         with:
           name: source

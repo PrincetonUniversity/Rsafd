@@ -47,6 +47,10 @@ jobs:
           extra-packages: any::rcmdcheck
           needs: check
 
+      - name: XQuartz for tcltk (macOS)
+        if: runner.os == 'macOS'
+        run: brew install --cask xquartz
+
       - name: Virtual display for tcltk (Linux)
         if: runner.os == 'Linux'
         run: |
