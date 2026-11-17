@@ -108,8 +108,15 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+      # Download only the package artifacts by name; the run also contains
+      # Docker build-record artifacts that download-artifact cannot extract.
       - uses: actions/download-artifact@v4
         with:
+          name: source
+          path: dist
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: binary-*
           path: dist
           merge-multiple: true
       - name: Assemble assets
@@ -141,6 +148,9 @@ jobs:
     needs: [verify, checks]
     name: image (${{ matrix.arch }})
     runs-on: ${{ matrix.runner }}
+    env:
+      # Don't upload .dockerbuild build-record artifacts to the run.
+      DOCKER_BUILD_RECORD_UPLOAD: false
     permissions:
       contents: read
       packages: write
