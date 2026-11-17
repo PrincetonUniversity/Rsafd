@@ -1,6 +1,6 @@
 bscall <- function (TAU = 0.03, K = 1, S, R = 0.1, SIG = 0.15) 
 {
-	if (SIG==0) CALL <- max(S-exp(-R*TAU)*K,0)
+	if (SIG[1]==0) CALL <- max(S-exp(-R*TAU)*K,0)
 	else
 	{
 	    d1 <- log(S/K) + TAU * (R + SIG^2/2)

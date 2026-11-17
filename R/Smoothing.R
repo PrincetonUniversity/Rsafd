@@ -184,9 +184,11 @@ twoDkreg <- function (X, Y, B, XPRED = X, FITTED = FALSE, N = 256, lims = apply(
                 N, n))
             R <- NUM/DEN
             if (PLOT == TRUE) 
-                persp3d(GRIDX1, GRIDX2, R, aspect = c(1, 1, 0.5), 
-                  col = "lightblue", box=FALSE, xlab = X1NAME, ylab = X2NAME, 
-                  zlab = "")
+                persp3D(x = GRIDX1, y = GRIDX2, z = R, theta = 305, phi = 20, 
+                  axes = TRUE, scale = FALSE, nticks = 5, ticktype = "detailed", 
+                  xlab = X1NAME, ylab = X2NAME, bty = "g", col = "#0072B2", 
+                  border = "black", shade = 0.2, ltheta = 90, space = 0.3, 
+                  d = 2)
             OUT <- list(gridx1 = GRIDX1, gridx2 = GRIDX2, y = R)
         }
     }

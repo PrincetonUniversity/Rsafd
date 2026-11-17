@@ -51,7 +51,7 @@ timeSeries <- function (positions, data, units = NULL,  zone = "GMT", FinCenter 
     }
     if (is.character(positions)) 
     {
-          format <- .whichFormat(positions)
+          format <- whichFormat(positions)
        	 positions <- timeDate(charvec=positions, format=format, zone=zone, FinCenter=FinCenter)
     }
     timeDates <- positions
@@ -323,8 +323,8 @@ merge.timeSeries <- function (x, y, INTERSECT = FALSE, units = NULL, ...)
         ans <- timeSeries(positions = timeDates, data = Z, zone = x@zone,
         FinCenter = x@FinCenter, units = c(seriesUnits(x), seriesUnits(y)))
         if (!is.null(units)) {
-            seriesUnits(ans) <-  units
-            colnames(ans@Data) <- units
+            ans@units <-  units
+            colnames(ans@data) <- units
         }
         ans
     }
@@ -360,7 +360,7 @@ setMethod("sstl","timeSeries", function (SERIES, FREQ=365, TWIND = 0.05,TDEGREE=
 #setGeneric("acf", function(x,y) standardGeneric("acf"))
 #setMethod("acf","timeSeries", function(x,y) acf.timeSeries(x,type=y))
 
-as.ts.timeSeries <- function(x) {ts(data=x@data,start=1,end=length(x@positions))}
+as.ts.timeSeries <- function(x, ...) {ts(data=x@data,start=1,end=length(x@positions))}
 
 
 

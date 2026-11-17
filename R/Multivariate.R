@@ -167,7 +167,7 @@ indB <- pmin(apply(OX>OB,1,sum),N2-1)
  
     indback <- c(1: N2)
     indback[sort.list(tt)] <- c(1: N2)
-    i <- outC[indback] 
+    i <- indB[indback] 
     iovn <- i/n
     v2 <- (tt^(iovn))*((1-tt)^(1-iovn))*Qn^(1 - p(tt))/(Q[i])
 
@@ -1140,7 +1140,7 @@ Pearson.test <- function(empir.cop, param.copula, Ncells = 36, est.param = 0)
    N <- as.integer(n)
     nsamp <- as.integer(length(xsort))
         val1 <- as.double(rep(0, N*N))
-    outC <- .C("jointDensity",
+    outC <- .jointDensity(
         xsort,
         ysort,
         nsamp,
@@ -1972,7 +1972,7 @@ setMethod("rcopula","bb1.copula",
     epsY <- as.double(1e-010)
     conv <- as.integer(rep(-9, n))
     maxit <- as.integer(100)
-    cout <- .C("inverseDerivPhiBB",
+    cout <- .inverseDerivPhiBB(
         Xtemp,
         as.integer(n),
         delta,
@@ -2026,7 +2026,7 @@ setMethod("rcopula","bb2.copula",
     epsY <- as.double(1e-010)
     conv <- as.integer(rep(-9, n))
     maxit <- as.integer(100)
-    cout <- .C("inverseDerivPhiBB",
+    cout <- .inverseDerivPhiBB(
         Xtemp,
         as.integer(n),
         delta,
@@ -2080,7 +2080,7 @@ setMethod("rcopula","bb3.copula",
     epsY <- as.double(1e-010)
     conv <- as.integer(rep(-9, n))
     maxit <- as.integer(100)
-    cout <- .C("inverseDerivPhiBB",
+    cout <- .inverseDerivPhiBB(
         Xtemp,
         as.integer(n),
         delta,
@@ -2134,7 +2134,7 @@ setMethod("rcopula","bb6.copula",
     epsY <- as.double(1e-010)
     conv <- as.integer(rep(-9, n))
     maxit <- as.integer(100)
-    cout <- .C("inverseDerivPhiBB",
+    cout <- .inverseDerivPhiBB(
         Xtemp,
         as.integer(n),
         delta,
@@ -2188,7 +2188,7 @@ setMethod("rcopula","bb7.copula",
     epsY <- as.double(1e-010)
     conv <- as.integer(rep(-9, n))
     maxit <- as.integer(100)
-    cout <- .C("inverseDerivPhiBB",
+    cout <- .inverseDerivPhiBB(
         Xtemp,
         as.integer(n),
         delta,
@@ -2475,7 +2475,7 @@ setMethod("Kendalls.tau","joe.copula",
 
 setMethod("Kendalls.tau", "normal.mix.copula", function (copula, tol = 0.01) 
 {
-    assign("tempCop", copula, pos = 1)
+    tempCop <- copula
     Cv <- function(x, y) {
         x1 <- pcopula(tempCop, x, y)
         x2 <- dcopula(tempCop, x, y)
@@ -2550,13 +2550,13 @@ setMethod("Spearmans.rho","bb5.copula",
 
 
 setMethod("Spearmans.rho","normal.copula", function(copula, tol = 1e-5) {
-	  delta <- as.vector(copula$parameters[1])
+	  delta <- as.vector(copula@parameters[1])
      return(6*asin(delta/2.0)/pi)	
 })
 
 setMethod("Spearmans.rho", "normal.mix.copula", function (copula, tol = 1e-05) 
 {
-    assign("tempCop", copula, pos = 1)
+    tempCop <- copula
     Cv <- function(x, y) {
         x1 <- pcopula(tempCop, x, y)
         return(x1)
@@ -2573,7 +2573,7 @@ setMethod("Spearmans.rho", "normal.mix.copula", function (copula, tol = 1e-05)
 
 setMethod("Spearmans.rho", "bb4.copula", function (copula, tol = 1e-05) 
 {
-    assign("tempCop", copula, pos = 1)
+    tempCop <- copula
     Cv <- function(x, y) {
         x1 <- pcopula(tempCop, x, y)
         return(x1)
@@ -2591,7 +2591,7 @@ setMethod("Spearmans.rho", "bb4.copula", function (copula, tol = 1e-05)
 
 setMethod("Spearmans.rho", "frank.copula", function (copula, tol = 1e-05) 
 {
-    assign("tempCop", copula, pos = 1)
+    tempCop <- copula
     Cv <- function(x, y) {
         x1 <- pcopula(tempCop, x, y)
         return(x1)
@@ -2608,7 +2608,7 @@ setMethod("Spearmans.rho", "frank.copula", function (copula, tol = 1e-05)
 
 setMethod("Spearmans.rho", "kimeldorf.sampson.copula", function (copula, tol = 1e-05) 
 {
-    assign("tempCop", copula, pos = 1)
+    tempCop <- copula
     Cv <- function(x, y) {
         x1 <- pcopula(tempCop, x, y)
         return(x1)
@@ -2625,7 +2625,7 @@ setMethod("Spearmans.rho", "kimeldorf.sampson.copula", function (copula, tol = 1
 
 setMethod("Spearmans.rho", "bb1.copula", function (copula, tol = 1e-05) 
 {
-    assign("tempCop", copula, pos = 1)
+    tempCop <- copula
     Cv <- function(x, y) {
         x1 <- pcopula(tempCop, x, y)
         return(x1)
@@ -2642,7 +2642,7 @@ setMethod("Spearmans.rho", "bb1.copula", function (copula, tol = 1e-05)
 
 setMethod("Spearmans.rho", "bb2.copula", function (copula, tol = 1e-05) 
 {
-    assign("tempCop", copula, pos = 1)
+    tempCop <- copula
     Cv <- function(x, y) {
         x1 <- pcopula(tempCop, x, y)
         return(x1)
@@ -2659,7 +2659,7 @@ setMethod("Spearmans.rho", "bb2.copula", function (copula, tol = 1e-05)
 
 setMethod("Spearmans.rho", "bb3.copula", function (copula, tol = 1e-05) 
 {
-    assign("tempCop", copula, pos = 1)
+    tempCop <- copula
     Cv <- function(x, y) {
         x1 <- pcopula(tempCop, x, y)
         return(x1)
@@ -2676,7 +2676,7 @@ setMethod("Spearmans.rho", "bb3.copula", function (copula, tol = 1e-05)
 
 setMethod("Spearmans.rho", "bb6.copula", function (copula, tol = 1e-05) 
 {
-    assign("tempCop", copula, pos = 1)
+    tempCop <- copula
     Cv <- function(x, y) {
         x1 <- pcopula(tempCop, x, y)
         return(x1)
@@ -2693,7 +2693,7 @@ setMethod("Spearmans.rho", "bb6.copula", function (copula, tol = 1e-05)
 
 setMethod("Spearmans.rho", "bb7.copula", function (copula, tol = 1e-05) 
 {
-    assign("tempCop", copula, pos = 1)
+    tempCop <- copula
     Cv <- function(x, y) {
         x1 <- pcopula(tempCop, x, y)
         return(x1)
@@ -2710,7 +2710,7 @@ setMethod("Spearmans.rho", "bb7.copula", function (copula, tol = 1e-05)
 
 setMethod("Spearmans.rho", "joe.copula", function (copula, tol = 1e-05) 
 {
-    assign("tempCop", copula, pos = 1)
+    tempCop <- copula
     Cv <- function(x, y) {
         x1 <- pcopula(tempCop, x, y)
         return(x1)
@@ -3899,8 +3899,6 @@ qmvnorm <- function (p, interval = NULL, tail = c("lower.tail", "upper.tail",
 
 dmvnorm <- function (x, mean, cov, sd, rho, d = 2, sigma = cov, log = FALSE) 
 {
-    if (!missing(cov) && (d.cov != d.mean)) 
-        stop("The dimensions of cov and mean do not match")
     if (missing(mean)) 
         mean <- rep(0, d)
     if (!is.vector(mean)) 
@@ -3925,6 +3923,8 @@ dmvnorm <- function (x, mean, cov, sd, rho, d = 2, sigma = cov, log = FALSE)
             t(cov)) > sqrt(.Machine$double.eps))) 
             stop("cov must be a square symmetric matrix")
         d.cov <- nrow(cov)
+        if (!missing(cov) && (d.cov != d.mean)) 
+            stop("The dimensions of cov and mean do not match")
     }
     else {
         if (missing(sd) || missing(rho)) 
@@ -4018,7 +4018,7 @@ function (n, mean = rep(0, d), cov = diag(d), sd, rho, d = 2,
         sd, "*")
     method <- match.arg(method)
     if (method == "svd") {
-        ev <- eigen(sigma, sym = TRUE)$values
+        ev <- eigen(sigma, symmetric = TRUE)$values
         if (!all(ev >= -sqrt(.Machine$double.eps) * abs(ev[1]))) 
             warning("sigma is numerically not positive definite")
         sigsvd <- svd(sigma)

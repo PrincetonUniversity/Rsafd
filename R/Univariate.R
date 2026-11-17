@@ -243,8 +243,8 @@ gev.lmom <- function(lmom)
 gev.ml <- function(sample, init.est = NA, epsilon = 1e-5) 
 {
         lmomest <- init.est
-        assign("tempX",sample,pos= 1)
-        assign("tempN",length(sample), pos =1)
+        tempX <- sample
+        tempN <- length(sample)
 
         if (is.na(lmomest[1])) 
         { 
@@ -533,8 +533,8 @@ gpd.ml <- function(sample, location = NA, init.est = NA, epsilon = 1e-6)
         tmpX <- sample-location
         tmpX <- tmpX[tmpX>0]
         tmpN <- length(tmpX)
-        assign("tempX",tmpX, pos = 1)
-        assign("tempN",tmpN, pos =1)
+        tempX <- tmpX
+        tempN <- tmpN
         if (is.na(lmomest[1]))
         {
             lmomest <- gpd.lmom(lmom=sample.LMOM(sample), location = location)$param.est
@@ -579,8 +579,8 @@ gpd.ml <- function(sample, location = NA, init.est = NA, epsilon = 1e-6)
     }        
     else
     {           
-        assign("tempX",sample,pos= 1)
-        assign("tempN",length(sample), pos =1)
+        tempX <- sample
+        tempN <- length(sample)
         if (is.na(lmomest[1]))
         {
               lmomest <- gpd.lmom(lmom=sample.LMOM(sample), sample = sample)$param.est
@@ -692,7 +692,7 @@ fit.gpd <- function (data, tail = "two", upper = NA, lower = NA, upper.method = 
             upper.converged <- NA
         }
         else stop(paste("Unknown method for the parameter estimation: ", 
-            method))
+            upper.method))
         upper.par.ests <- c(gpd.est["lambda"], gpd.est["xi"])
         n.upper.exceed <- length(upper.excess)
         p.less.upper.thresh <- 1 - n.upper.exceed/n
@@ -715,7 +715,7 @@ fit.gpd <- function (data, tail = "two", upper = NA, lower = NA, upper.method = 
             lower.converged <- NA
         }
         else stop(paste("Unknown method for the parameter estimation: ", 
-            method))
+            lower.method))
         lower.par.ests <- c(gpd.est["lambda"], gpd.est["xi"])
         n.lower.exceed <- length(lower.excess)
         p.larger.lower.thresh <- 1 - n.lower.exceed/n
@@ -1185,9 +1185,9 @@ upper.shape.plot <- function (data, method = "ml", from = 0.5, to = 0.98, nint =
         data <- as.matrix(data)
     }
     data <- sort(unclass(data))
-    assign("tempData", data, pos = 1)
+    tempData <- data
     estFun <- get(paste("gpd", method, sep = "."))
-    assign("tempEstFun", estFun, pos = 1)
+    tempEstFun <- estFun
     n <- length(data)
     l1 <- data[trunc(from * n)]
     l2 <- data[trunc(to * n)]
