@@ -28,10 +28,11 @@ Creates an environment named `Renv` with R 4.5, Python 3.12, Jupyter, TensorFlow
 
 ```sh
 # macOS (Apple Silicon)
-conda create -y -n Renv --file <(curl -fsSL https://raw.githubusercontent.com/PrincetonUniversity/Rsafd/main/conda/renv-osx-arm64.txt)
+curl -fsSL https://raw.githubusercontent.com/PrincetonUniversity/Rsafd/main/conda/renv-osx-arm64.txt -o /tmp/renv.txt
 # Linux or WSL
-conda create -y -n Renv --file <(curl -fsSL https://raw.githubusercontent.com/PrincetonUniversity/Rsafd/main/conda/renv-linux-$(uname -m).txt)
+curl -fsSL https://raw.githubusercontent.com/PrincetonUniversity/Rsafd/main/conda/renv-linux-$(uname -m).txt -o /tmp/renv.txt
 
+conda create -y -n Renv --override-channels -c conda-forge --file /tmp/renv.txt
 conda activate Renv
 Rscript -e 'install.packages("https://github.com/PrincetonUniversity/Rsafd/releases/latest/download/Rsafd.tar.gz", repos = NULL, type = "source")'
 jupyter notebook

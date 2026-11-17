@@ -46,7 +46,8 @@ jobs:
           auto-activate-base: false
 
       - name: Create Renv from the lockfile
-        run: conda create -y -n Renv --file conda/${{ matrix.lockfile }}
+        # Same command as the README: conda-forge only (no Anaconda ToS prompt)
+        run: conda create -y -n Renv --override-channels -c conda-forge --file conda/${{ matrix.lockfile }}
 
       - name: Install Rsafd from this checkout
         run: |
