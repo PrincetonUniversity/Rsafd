@@ -11,7 +11,7 @@ Choose one. Each is tested in CI on macOS (Apple Silicon), Windows and Linux.
 ### R (4.2 or newer)
 
 ```r
-install.packages(c("MASS", "plot3D", "quantreg", "robustbase", "timeDate", "tseries"))
+install.packages(c("MASS", "quantreg", "robustbase", "timeDate", "tseries"))
 url <- "https://github.com/PrincetonUniversity/Rsafd/releases/latest/download/"
 if (.Platform$OS.type == "windows") {
   install.packages(paste0(url, "Rsafd.zip"), repos = NULL)
@@ -20,7 +20,7 @@ if (.Platform$OS.type == "windows") {
 }
 ```
 
-On macOS, install [XQuartz](https://www.xquartz.org) first: plot3D loads R's tcltk, which needs it. The Miniconda route below does not.
+For the 3D plots (`kdest`, `twoDkreg`, `persp.*`), also run `install.packages("plot3D")`. On macOS, plot3D needs [XQuartz](https://www.xquartz.org). Everything else works without either.
 
 ### Miniconda (Jupyter with R and Python)
 

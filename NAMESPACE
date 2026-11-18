@@ -9,7 +9,6 @@ importFrom(stats, acf, approx, approxfun, ar, arima, as.ts, cooks.distance,
            runif, stl, supsmu, ts, uniroot, var)
 importFrom(utils, head, tail)
 importFrom(MASS, bandwidth.nrd)
-importFrom(plot3D, mesh, persp3D)
 importFrom(quantreg, rq)
 importFrom(robustbase, lmrob)
 importFrom(tseries, adf.test, garch.control)
