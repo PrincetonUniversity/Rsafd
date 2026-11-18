@@ -1,4 +1,4 @@
-# Rsafd (development version)
+# Rsafd 1.2.0
 
 * plot3D is now optional (Suggests). Rsafd no longer loads it, or R's tcltk,
   when attached, so it installs and loads on macOS without XQuartz. Only the
