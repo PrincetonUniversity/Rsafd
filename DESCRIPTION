@@ -1,7 +1,7 @@
 Package: Rsafd
 Type: Package
 Title: Statistical Analysis of Financial Data in R
-Version: 1.1.0
+Version: 1.2.0
 Authors@R: c(
     person("Rene", "Carmona", email = "rcarmona@princeton.edu",
            role = c("aut", "cre")))
