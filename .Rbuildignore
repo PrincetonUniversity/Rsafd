@@ -3,6 +3,7 @@
 ^\.dockerignore$
 ^Dockerfile$
 ^docker$
+^docs$
 ^conda$
 ^docker-compose\.yml$
 ^LICENSE\.md$

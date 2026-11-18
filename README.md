@@ -40,6 +40,8 @@ jupyter notebook
 
 Later sessions: `conda activate Renv`, then `jupyter notebook`. Remove with `conda env remove -n Renv`.
 
+To check a new environment or container, run the notebook checks in [docs/testing-jupyter.md](docs/testing-jupyter.md).
+
 ### Docker (Jupyter with R and Python)
 
 Requires [Docker Desktop](https://www.docker.com/products/docker-desktop/). Open the printed URL in a browser.
