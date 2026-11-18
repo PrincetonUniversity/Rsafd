@@ -1,9 +1,17 @@
 name: R-CMD-check
 
+# Documentation-only changes (docs/ and Markdown files) do not run these checks.
+# Releases always run them (workflow_call from release.yml).
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - "docs/**"
+      - "**.md"
   pull_request:
+    paths-ignore:
+      - "docs/**"
+      - "**.md"
   workflow_dispatch:
   workflow_call:
 
