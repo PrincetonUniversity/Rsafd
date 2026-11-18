@@ -5,11 +5,17 @@ test_that("loading Rsafd does not load plot3D or tcltk", {
   on.exit(unlink(script), add = TRUE)
   writeLines(c(
     "suppressMessages(library(Rsafd))",
-    "cat(c('plot3D', 'tcltk') %in% loadedNamespaces())"
+    "cat('loaded:', c('plot3D', 'tcltk') %in% loadedNamespaces(), '\\n')"
   ), script)
-  out <- system2(file.path(R.home("bin"), "Rscript"), script, stdout = TRUE, stderr = FALSE,
-                 env = paste0("R_LIBS=", paste(.libPaths(), collapse = .Platform$path.sep)))
-  expect_identical(utils::tail(out, 1), "FALSE FALSE")
+  # system2(env = ) is not supported on Windows, so pass the library path
+  # to the child R process through the environment instead.
+  old <- Sys.getenv("R_LIBS")
+  Sys.setenv(R_LIBS = paste(.libPaths(), collapse = .Platform$path.sep))
+  on.exit(Sys.setenv(R_LIBS = old), add = TRUE)
+  out <- system2(file.path(R.home("bin"), "Rscript"), shQuote(script),
+                 stdout = TRUE, stderr = TRUE)
+  expect_true(any(grepl("^loaded: FALSE FALSE", out)),
+              info = paste(out, collapse = "\n"))
 })
 
 test_that("3D plots explain how to install plot3D when it is missing", {
