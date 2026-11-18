@@ -64,6 +64,43 @@ jobs:
           error-on: '"warning"'
           upload-snapshots: true
 
+  macos-without-xquartz:
+    name: macOS without XQuartz or plot3D
+    runs-on: macos-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - name: XQuartz must be absent
+        run: test ! -e /opt/X11/lib/libX11.6.dylib
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          dependencies: '"hard"'
+
+      - name: Install Rsafd
+        run: R CMD INSTALL .
+
+      - name: Load Rsafd without plot3D or tcltk
+        shell: Rscript {0}
+        run: |
+          stopifnot(!requireNamespace("plot3D", quietly = TRUE))
+          library(Rsafd)
+          stopifnot(!any(c("plot3D", "tcltk") %in% loadedNamespaces()))
+          fit <- fit.gpd(DSPLRet, tail = "two", plot = FALSE)
+          stopifnot(is(fit, "gpd.two.tails"))
+          set.seed(1)
+          X <- cbind(runif(50), runif(50)); Y <- X[, 1] + rnorm(50, sd = 0.1)
+          msg <- tryCatch(twoDkreg(X, Y, B = c(0.2, 0.2), N = 10, PLOT = TRUE),
+                          error = conditionMessage)
+          stopifnot(grepl('install.packages("plot3D")', msg, fixed = TRUE))
+          cat("Rsafd", format(packageVersion("Rsafd")), "loads on macOS without XQuartz\n")
+
   lint:
     runs-on: ubuntu-latest
     env:

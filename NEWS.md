@@ -1,3 +1,10 @@
+# Rsafd (development version)
+
+* plot3D is now optional (Suggests). Rsafd no longer loads it, or R's tcltk,
+  when attached, so it installs and loads on macOS without XQuartz. Only the
+  3D plots (`kdest()`, `twoDkreg()` and the `persp.*` methods with plotting)
+  need plot3D, and they explain how to install it when it is missing (#3).
+
 # Rsafd 1.1.0
 
 ## Packaging
