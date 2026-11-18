@@ -20,7 +20,6 @@ Imports:
     graphics,
     MASS,
     methods,
-    plot3D,
     quantreg,
     robustbase,
     stats,
@@ -28,6 +27,7 @@ Imports:
     tseries,
     utils
 Suggests:
+    plot3D,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Encoding: UTF-8
@@ -41,3 +41,4 @@ Collate:
     Smoothing.R
     timeSeries.R
     native-ports.R
+    plot3d.R

@@ -76,6 +76,7 @@ test_that("fit.gpd reports an unknown estimation method clearly", {
 })
 
 test_that("twoDkreg can plot without the rgl package", {
+  skip_if_not_installed("plot3D")
   set.seed(6)
   X <- cbind(runif(100), runif(100))
   Y <- X[, 1] + X[, 2] + rnorm(100, sd = 0.1)
